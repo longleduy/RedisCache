@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<HSoThueDTu xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <HSoKhaiThue>
+        <TTinChung>
+            <TTinDVu>
+                <maDVu>ETAX</maDVu>
+                <tenDVu>ETAX 1.0</tenDVu>
+                <pbanDVu>1.0</pbanDVu>
+                <ttinNhaCCapDVu>ETAX_TCT</ttinNhaCCapDVu>
+            </TTinDVu>
+            <TTinTKhaiThue>
+                <TKhaiThue>
+                    <maTKhai>84</maTKhai>
+                    <tenTKhai>Tờ khai quyết toán thuế TAIN dành cho CSSX thủy điện</tenTKhai>
+                    <moTaBMau/>
+                    <pbanTKhaiXML>2.0.5</pbanTKhaiXML>
+                    <loaiTKhai>C</loaiTKhai>
+                    <soLan>0</soLan>
+                    <KyKKhaiThue>
+                        <kieuKy>Y</kieuKy>
+                        <kyKKhai>2017</kyKKhai>
+                        <kyKKhaiTuNgay>01/02/2017</kyKKhaiTuNgay>
+                        <kyKKhaiDenNgay>31/12/2017</kyKKhaiDenNgay>
+                        <kyKKhaiTuThang>02/2017</kyKKhaiTuThang>
+                        <kyKKhaiDenThang>12/2017</kyKKhaiDenThang>
+                    </KyKKhaiThue>
+                    <maCQTNoiNop>10100</maCQTNoiNop>
+                    <tenCQTNoiNop>Cục Thuế Thành phố Hà Nội</tenCQTNoiNop>
+                    <ngayLapTKhai>24/01/2018</ngayLapTKhai>
+                    <nguoiKy></nguoiKy>
+                    <ngayKy>2018-01-24</ngayKy>
+                    <nganhNgheKD></nganhNgheKD>
+                </TKhaiThue>
+                <NNT>
+                    <mst>0100231226-998</mst>
+                    <tenNNT>Tổng cục thuế</tenNNT>
+                    <dchiNNT> 123 Lò Đúc</dchiNNT>
+                    <phuongXa></phuongXa>
+                    <maHuyenNNT></maHuyenNNT>
+                    <tenHuyenNNT>Quận Hai Bà Trưng</tenHuyenNNT>
+                    <maTinhNNT></maTinhNNT>
+                    <tenTinhNNT>Hà Nội</tenTinhNNT>
+                    <dthoaiNNT>22233688837</dthoaiNNT>
+                    <faxNNT>9712286</faxNNT>
+                    <emailNNT>111111123@gmail.com</emailNNT>
+                </NNT>
+            </TTinTKhaiThue>
+        </TTinChung>
+        <CTieuTKhaiChinh>
+            <ct21_ma>0</ct21_ma>
+            <ct21_ten>0</ct21_ten>
+            <ct22>0</ct22>
+            <BKeThueTAIN>
+                <chiTietThueTAIN id="">
+                    <ct23>1</ct23>
+                    <ct24>0100231226</ct24>
+                    <ct25>0.0000</ct25>
+                    <ct26>0.0000</ct26>
+                    <ct27>0</ct27>
+                    <ct28>0</ct28>
+                    <ct29>0</ct29>
+                    <ct30>0</ct30>
+                    <ct31>0</ct31>
+                </chiTietThueTAIN>
+            </BKeThueTAIN>
+            <tong_ct27>0</tong_ct27>
+            <tong_ct28>0</tong_ct28>
+            <tong_ct29>0</tong_ct29>
+            <tong_ct30>0</tong_ct30>
+            <tong_ct31>0</tong_ct31>
+        </CTieuTKhaiChinh>
+        <PLuc>
+            <PL_03_1_TD_TAIN>
+                <BKePBoThueTNChoDPhuong>
+                    <CTietBKePBoThueTNChoDPhuong id="0">
+                        <tenNhaMay>1</tenNhaMay>
+                        <mstNhaMay>0100231226-998</mstNhaMay>
+                        <tyLePhanBo>0.00</tyLePhanBo>
+                        <soThueTNguyenPNop>0</soThueTNguyenPNop>
+                        <CQTDiaPhuong/>
+                    </CTietBKePBoThueTNChoDPhuong>
+                </BKePBoThueTNChoDPhuong>
+                <tongCong>0</tongCong>
+            </PL_03_1_TD_TAIN>
+        </PLuc>
+    </HSoKhaiThue>
+    <CKyDTu/>
+</HSoThueDTu>

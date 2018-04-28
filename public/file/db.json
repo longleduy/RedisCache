@@ -1,0 +1,76 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Storm whisperer",
+      "img": "https://steamuserimages-a.akamaihd.net/ugc/870746005981912107/C8C65683C87BDE8DB367589A0DC14205DC2F3A74/?interpolation=lanczos-none&output-format=jpeg&output-quality=95&fit=inside%7C268%3A268&composite-to=*,*%7C268%3A268&background-color=black",
+      "description": "Nvdia Company",
+      "price": 1000,
+      "inventory": 9999,
+      "rate": 5
+    },
+    {
+      "id": 2,
+      "name": "The Immortal Of Realm",
+      "img": "https://steamuserimages-a.akamaihd.net/ugc/535122589876386614/E40558EB1ECFD7BDFFE0D3D6F47A3683C0C6537C/?interpolation=lanczos-none&output-format=jpeg&output-quality=95&fit=inside%7C268%3A268&composite-to=*,*%7C268%3A268&background-color=black",
+      "description": "Nvdia Company",
+      "price": 65,
+      "inventory": 322,
+      "rate": 3
+    },
+    {
+      "id": 3,
+      "name": "The Return of The King of Gods",
+      "img": "https://steamuserimages-a.akamaihd.net/ugc/258218355745488763/BC8603BCCD156BBB5C29CFD57C717625664E546F/?interpolation=lanczos-none&output-format=jpeg&output-quality=95&fit=inside%7C268%3A268&composite-to=*,*%7C268%3A268&background-color=black",
+      "description": "Nvdia Company",
+      "price": 34,
+      "inventory": 722,
+      "rate": 2
+    },
+    {
+      "id": 4,
+      "name": "Bearzky the Polar Ursine",
+      "img": "https://steamuserimages-a.akamaihd.net/ugc/577894016444618908/3A7B29481FF55FF625DE28E0E817BFB311E0CAFA/?interpolation=lanczos-none&output-format=jpeg&output-quality=95&fit=inside%7C268%3A268&composite-to=*,*%7C268%3A268&background-color=black",
+      "description": "Nvdia Company",
+      "price": 34,
+      "inventory": 722,
+      "rate": 2
+    },
+    {
+      "id": 5,
+      "name": "The Monkey Sentinel",
+      "img": "https://steamuserimages-a.akamaihd.net/ugc/105105875530943048/FFFF2A3F72887EF8615CD3E4C0968116997A2166/?interpolation=lanczos-none&output-format=jpeg&output-quality=95&fit=inside%7C268%3A268&composite-to=*,*%7C268%3A268&background-color=black",
+      "description": "Nvdia Company",
+      "price": 49,
+      "inventory": 500,
+      "rate": 5
+    },
+    {
+      "id": 6,
+      "name": "Light of Eleanor",
+      "img": "https://steamuserimages-a.akamaihd.net/ugc/170410764609376268/862922C29A02C8A828B2ABB5F1BA0A324D300190/?interpolation=lanczos-none&output-format=jpeg&output-quality=95&fit=inside%7C268%3A268&composite-to=*,*%7C268%3A268&background-color=black",
+      "description": "Nvdia Company",
+      "price": 65,
+      "inventory": 322,
+      "rate": 3
+    },
+    {
+      "id": 7,
+      "name": "Battle Calls Music Pack",
+      "img": "https://steamuserimages-a.akamaihd.net/ugc/352769929938496586/00BCB9B64F594263FE5D922FC93B8BE4CA7133AA/?interpolation=lanczos-none&output-format=jpeg&output-quality=95&fit=inside%7C268%3A268&composite-to=*,*%7C268%3A268&background-color=black",
+      "description": "Nvdia Company",
+      "price": 34,
+      "inventory": 722,
+      "rate": 2
+    },
+    {
+      "id": 8,
+      "name": "Fearless Impactor",
+      "img": "https://steamuserimages-a.akamaihd.net/ugc/481147072372043483/4D179B2EF99EC6EC8CBB471C5260697318488F9C/?interpolation=lanczos-none&output-format=jpeg&output-quality=95&fit=inside%7C268%3A268&composite-to=*,*%7C268%3A268&background-color=black",
+      "description": "Nvdia Company",
+      "price": 34,
+      "inventory": 722,
+      "rate": 2
+    }
+  ]
+}

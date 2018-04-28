@@ -1,0 +1,17 @@
+footer.page-footer {
+    width: 100%;
+    background-color: #263238;
+    .footer-copyright {
+        .container {
+            a {
+                font-weight: 500;
+                font-size: 2em;
+            }
+        }
+    }
+}
+
+.row.parent-div {
+    margin-top: 50px;
+    min-height: calc(100vmin - 155px);
+}

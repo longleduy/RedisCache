@@ -1,0 +1,6 @@
+//TODO: Không push nhưng phần này lên github
+#modules
+/node_modules
+#production
+/dist
+/public/font-awesome

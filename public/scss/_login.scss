@@ -1,0 +1,80 @@
+.login-component {
+    margin-top: 30px;
+    .login-info {
+        position: relative;
+        .col.s3 {
+            position: absolute;
+            font-weight: bold;
+            top: 22%;
+            left: 15px;
+            label {
+                font-size: 15px;
+            }
+        }
+        .col.s12 input {
+            text-align: center;
+            padding-left: 40px;
+            max-width: calc(100% - 40px);
+            font-weight: bold;
+            color: #273238;
+        }
+        i.material-icons.wrong-type {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: #bb0404;
+            font-size: 20px;
+            display: none;
+        }
+        label#user_name_label,label#pass_word_label,label#re_pass_word_label {
+            color: #607D8B;
+        }
+    }
+    label.login-title {
+        font-weight: bold;
+        color: #273238;
+        font-size: 32px;
+        padding: 11px 20px;
+        width: 100%;
+        float: left;
+    }
+    .login-btn {
+        a.forgot-pass {
+            text-align: right;
+            color: #607d8b;
+        }
+        .btn-div {
+            button.btn {
+                margin: 20px 5px;
+                i.material-icons {
+                    float: left;
+                    margin-right: 5px;
+                }
+            }
+        }
+        .other-acc {
+            text-align: right;
+            a {
+                margin-right: 5px;
+                float: right;
+                img {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+            a:nth-child(4) {
+                img {
+                    width: 35px;
+                    height: 35px;
+                }
+            }
+            a:nth-child(2) {
+                img {
+                    width: 29px;
+                    height: 29px;
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,55 @@
+.col.s12.header {
+    .menu {
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        left: 0px;
+        z-index: 999;
+        nav {
+            height: 50px;
+            line-height: 50px;
+            background-color: $main_color_main;
+            li.active {
+                background-color: $main_color_900;
+                box-shadow: $box-shadow-lvl3;
+            }
+            .nav-wrapper {
+                a.brand-logo.center {
+                    font-size: 2.5em !important;
+                    font-weight: bold;
+                    color: white;
+                }
+                ul {
+                    li {
+                        min-width: 100px;
+                        text-align: center;
+                        a {
+                            font-weight: 500;
+                        }
+                    }
+                }
+                a.verified-user {
+                    position: absolute;
+                    right: 30px;
+                    transform: translateY(-50%);
+                    top: 50%;
+                    padding: 10px;
+                    border-radius: 50%;
+                    i.material-icons {
+                        height: unset;
+                        line-height: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.col.unset_padding {
+    padding: 0px !important;
+}
+
+.active {
+    background-color: $main_color_900;
+    box-shadow: $box-shadow-lvl3;
+}

@@ -1,0 +1,70 @@
+.col.s12.not-found-div {
+    text-align: center;
+    margin-top: 200px;
+    label.not-found-title {
+        font-size: 72px;
+        font-weight: bold;
+    }
+}
+
+.row {
+    .btn {
+        background-color: $main_color_700;
+        transition: ease .5s;
+        padding: 0 1rem;
+    }
+    .btn:hover,
+    .btn:focus {
+        background-color: unset;
+        box-shadow: unset;
+        color: #455a64;
+        border-radius: 0px;
+        transition: ease .5s;
+        border-bottom: solid 1px #455a64;
+    }
+    .cancel-btn {
+        background-color: unset !important;
+        box-shadow: unset;
+        color: #273238;
+        font-weight: 500;
+        border-bottom: solid 1px;
+        border-radius: 0px;
+    }
+    .cancel-btn:hover {
+        border: none;
+    }
+    input.error-input,
+    input.error-input:focus {
+        border-bottom: solid 2px red !important;
+    }
+    input.success-input,
+    input.success-input:focus {
+        border-bottom: solid 2px green !important;
+    }
+    input:not([type]):focus:not([readonly]),
+    input[type=text]:not(.browser-default):focus:not([readonly]),
+    input[type=password]:not(.browser-default):focus:not([readonly]),
+    input[type=email]:not(.browser-default):focus:not([readonly]),
+    input[type=url]:not(.browser-default):focus:not([readonly]),
+    input[type=time]:not(.browser-default):focus:not([readonly]),
+    input[type=date]:not(.browser-default):focus:not([readonly]),
+    input[type=datetime]:not(.browser-default):focus:not([readonly]),
+    input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+    input[type=tel]:not(.browser-default):focus:not([readonly]),
+    input[type=number]:not(.browser-default):focus:not([readonly]),
+    input[type=search]:not(.browser-default):focus:not([readonly]),
+    textarea.materialize-textarea:focus:not([readonly]) {
+        border-bottom: 1px solid #607d8b;
+        -webkit-box-shadow: 0 1px 0 0 #607d8b !important;
+        box-shadow: 0 1px 0 0 #607d8b;
+    }
+}
+
+.opacityItemList {
+    opacity: .2;
+    overflow: hidden;
+}
+[type="checkbox"] {
+    opacity:  unset !important;
+    pointer-events: unset !important;
+}

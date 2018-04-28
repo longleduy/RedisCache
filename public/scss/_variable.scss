@@ -1,0 +1,19 @@
+//Color : black
+$main_color_main: #607D8B;
+$main_color_50: #ECEFF1;
+$main_color_100: #CFD8DC;
+$main_color_200: #B0BEC5;
+$main_color_300: #90A4AE;
+//Color: white
+$main_color_400: #78909C;
+$main_color_500: #607D8B;
+$main_color_600: #546E7A;
+$main_color_700: #455A64;
+$main_color_800: #37474F;
+$main_color_900: #263238;
+$main_dark_text: $main_color_900;
+.text-shadow-1{
+    text-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
+}
+$box-shadow-lvl3: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.3);
+$box-shadow-lvl2: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
