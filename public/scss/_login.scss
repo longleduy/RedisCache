@@ -26,7 +26,7 @@
             font-size: 20px;
             display: none;
         }
-        label#user_name_label,label#pass_word_label,label#re_pass_word_label {
+        label#user_name_label,label#pass_word_label,label#re_pass_word_label,label#email_label {
             color: #607D8B;
         }
     }
@@ -77,4 +77,8 @@
         }
     }
 }
-
+label.error_label {
+    color:  red;
+    font-weight:  bold;
+    padding-left: 12px;
+}

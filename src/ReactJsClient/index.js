@@ -1,7 +1,7 @@
 //TODO: Module
 import ReactDOM from 'react-dom';
 import React from 'react';
-import App from './App';
+import App from './App.jsx';
 import Favicon from 'react-favicon';
 import "jquery";
 import "../../public/scss/materialui.scss";
