@@ -1,9 +1,7 @@
 import {combineReducers} from 'redux';
-import products from './products';
-import cards from './cards';
-import login from './login';
-import productInfo from './productInfo';
-var myReducer = combineReducers({
-    login
+import user_info from './user_info';
+
+const myReducer = combineReducers({
+    user_info
 })
 export default myReducer;

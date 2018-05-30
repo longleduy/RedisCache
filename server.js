@@ -3,8 +3,9 @@
 /**
  * Module dependencies.
  */
-
+import 'babel-polyfill';
 import app from './app';
+
 var debug = require('debug')('unicron:server');
 var http = require('http');
 

@@ -1,25 +1,10 @@
 body{
-    background: linear-gradient(-45deg, #ECEFF1, #B0BEC5);
+    background:$main_color_300;
     min-height: 89vh;
-}
-.container{
-    overflow: hidden;
-}
-.clearfix:after {
-    content: ".";
-    visibility: hidden;
-    display: block; 
-    clear: both;
-}
-
-@media only screen and (min-width: 993px){
-    .row.parent-div .container{
-        width: 80%;
+    .row{
+        margin: 0px;
     }
-}
-
-@media only screen and (min-width: 601px){
-    .row.parent-div .container{
-        width: 85%;
+    .my-header {
+        height: 45px;
     }
 }

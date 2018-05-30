@@ -1,0 +1,88 @@
+div#root {
+    .container.parent-div {
+        min-height: calc(100vh - 45px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .container {
+            padding-bottom: 45px;
+        }
+        .home-div {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            label.home-big-title {
+                color: white;
+                font-weight: bold;
+                font-size: 40px;
+            }
+            label.home-title-1 {
+                color: white;
+                font-size: 20px;
+                font-weight: bold;
+                position: absolute;
+                top: 15%;
+                left: 14%;
+                opacity: .6;
+            }
+            label.home-title-2 {
+                color: white;
+                font-size: 15px;
+                font-weight: bold;
+                position: absolute;
+                bottom: 15%;
+                right: 30%;
+                opacity: .4;
+            }
+            label.home-title-3 {
+                color: white;
+                font-size: 25px;
+                font-weight: bold;
+                position: absolute;
+                bottom: 33%;
+                left: 5%;
+                opacity: .2;
+            }
+            label.home-title-4 {
+                color: white;
+                font-size: 25px;
+                font-weight: bold;
+                position: absolute;
+                top: 32%;
+                right: 20%;
+                opacity: .3;
+            }
+            label.home-title-5 {
+                color: white;
+                font-size: 11px;
+                font-weight: bold;
+                position: absolute;
+                bottom: 26%;
+                left: 24%;
+                opacity: .5;
+            }
+            label.home-title-6 {
+                color: white;
+                font-size: 14px;
+                font-weight: bold;
+                position: absolute;
+                top: 10%;
+                right: 27%;
+                opacity: .4;
+            }
+            label.not-found-big-title {
+                font-size: 12rem;
+                color: white;
+                font-weight: bold;
+            }
+            label.not-found-small-title {
+                color: white;
+                font-weight: 500;
+                font-size: 25px;
+            }
+        }
+    }
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%),
+    url('../images/back-ground.png');
+    background-size: 100%;
+}

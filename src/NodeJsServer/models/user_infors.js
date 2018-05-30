@@ -1,8 +1,12 @@
 import mongoose from 'mongoose';
-const productSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     user_name: String,
     pass_word: String,
-    email: String
+    email: String,
+    permisson: String
 });
-const user = mongoose.model('user_infors',productSchema);
+userSchema.methods.validatePass = function (password) {
+    return bcrypt.compareSync(password, this.password);
+}
+const user = mongoose.model('user_infors',userSchema);
 export default user;

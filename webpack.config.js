@@ -16,7 +16,7 @@ const devServer = {
     stats : 'minimal',
     inline : true,
     compress : true,
-    contentBase : '/',
+    contentBase : path.resolve(__dirname, 'dist')
 };
 module.exports = {
     entry: {
@@ -24,8 +24,10 @@ module.exports = {
         vendor: VENDOR_LIBS
     },
     output: {
-        path: path.resolve(__dirname, 'dist') + '/materialUI',
+        path: path.resolve(__dirname, 'dist'),
         filename: '[name].[chunkhash].js',
+        //TODO: Sử dụng cho nested route (môi trường dev), mất cả buổi sáng vọc, khổ vlin
+        publicPath: 'http://localhost:8085/'
     },
     module: {
         rules: [
@@ -55,7 +57,7 @@ module.exports = {
                 loader: 'file-loader',
                 test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.woff2$|\.eot$|\.ttf|\.mp3$|\.wav$/
             }
-        ]
+        ],
     },
     plugins: [
         // TODO: Cấu hình để sử dụng đc jquery
@@ -63,7 +65,7 @@ module.exports = {
             '$': 'jquery',
             'jQuery': 'jquery',
             'windown.$': 'jquery',
-            'windown.jQuery': 'jquery',
+            'windown.jQuery': 'jquery'
         }),
         /* TODO: Optimize bundle.js và vendor.js => giảm kích thước file
                Thêm manifest: khi build lại project sẽ chỉ load lại những gói file có sự thay đổi ( thường là bundle.js) */ 

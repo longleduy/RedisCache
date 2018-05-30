@@ -15,12 +15,7 @@
     }
     .btn:hover,
     .btn:focus {
-        background-color: unset;
-        box-shadow: unset;
-        color: #455a64;
-        border-radius: 0px;
-        transition: ease .5s;
-        border-bottom: solid 1px #455a64;
+        background-color: #455a64;
     }
     .cancel-btn {
         background-color: unset !important;

@@ -1,84 +1,77 @@
-.login-component {
-    margin-top: 30px;
-    .login-info {
-        position: relative;
-        .col.s3 {
-            position: absolute;
-            font-weight: bold;
-            top: 22%;
-            left: 15px;
-            label {
-                font-size: 15px;
-            }
-        }
-        .col.s12 input {
-            text-align: center;
-            padding-left: 40px;
-            max-width: calc(100% - 40px);
-            font-weight: bold;
-            color: #273238;
-        }
-        i.material-icons.wrong-type {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            color: #bb0404;
-            font-size: 20px;
-            display: none;
-        }
-        label#user_name_label,label#pass_word_label,label#re_pass_word_label,label#email_label {
-            color: #607D8B;
-        }
+.sign_form {
+    display: flex;
+    align-items: center;
+    .btn-sign-up {
+        background-color: #455A64 !important;
+        margin-top: 15px;
     }
-    label.login-title {
+    .btn-default:not([disabled]):not(.disabled):active,
+    .btn-default:not([disabled]):not(.disabled).active,
+    .show>.btn-default.dropdown-toggle {
+        background-color: #455A64 !important;
+    }
+    a.label-sign {
+        margin-top: 10px;
+        display: block;
+        text-align: right;
+        color: white;
+        outline: unset;
+        font-size: .9em;
+    }
+    img.user-img {
+        width: 31%;
+    }
+    .div-user-img {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    span.big-title {
+        font-size: 50px;
         font-weight: bold;
-        color: #273238;
-        font-size: 32px;
-        padding: 11px 20px;
-        width: 100%;
-        float: left;
+        color: white;
     }
-    .login-btn {
-        a.forgot-pass {
-            text-align: right;
-            color: #607d8b;
-        }
-        .btn-div {
-            button.btn {
-                margin: 20px 5px;
-                i.material-icons {
-                    float: left;
-                    margin-right: 5px;
-                }
-            }
-        }
-        .other-acc {
-            text-align: right;
-            a {
-                margin-right: 5px;
-                float: right;
-                img {
-                    width: 30px;
-                    height: 30px;
-                }
-            }
-            a:nth-child(4) {
-                img {
-                    width: 35px;
-                    height: 35px;
-                }
-            }
-            a:nth-child(2) {
-                img {
-                    width: 29px;
-                    height: 29px;
-                }
-            }
-        }
+    label.tip {
+        color: $err_sign_color;
+        font-size: .8em;
+        font-weight: bold;
+        margin-bottom: unset;
+        transition: .5s ease-in;
+    }
+    i.fa.fa-user-plus.mr-1 {
+        font-size: 1.3em;
+    }
+    .err_label {
+        color: $err_sign_color !important;
+        font-weight: bold;
+    }
+    .input-err {
+        border-bottom-color: $err_sign_color !important;;
+    }
+    input.form-control.input-err:focus {
+        box-shadow: 0 1px 0 0 $err_sign_color !important;
+        border-bottom-color: $err_sign_color !important;
+    }
+    .error-input:focus{
+        box-shadow: 0 1px 0 0 $err_sign_color !important;
+        border-bottom-color: $err_sign_color !important;
+    }
+    .error-input{
+        border-bottom-color: $err_sign_color !important;
+    }
+    .success-sign-up{
+        color: $err_sign_color !important;
     }
 }
-label.error_label {
-    color:  red;
+.example-appear {
+    opacity: 0.01;
+ }
+ .example-appear.example-appear-active {
+    opacity: 1;
+    transition: opacity 400ms ease-in;
+ }
+ label.title-lvl {
     font-weight:  bold;
-    padding-left: 12px;
+    font-size: 30px;
+    color: white;
 }

@@ -37,7 +37,8 @@
                 "--require",
                 "babel-register"
             ],
-            "sourceMaps": true
+            "sourceMaps": true,
+            "smartStep": true
         }
     ],
     "compounds": [
