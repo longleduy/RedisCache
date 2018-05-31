@@ -75,3 +75,27 @@
     font-size: 30px;
     color: white;
 }
+.verify-email {
+    height: 400px;
+    position: absolute;
+    left: 17%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+label.verify-noti {
+    font-size:  20px;
+    font-weight:  bold;
+    color:  white;
+    text-align:  center;
+}
+label.sign-up-success {
+    text-align:  center;
+    font-size: 40px;
+    color:  white;
+    font-weight:  bold;
+    margin-bottom: 20px;
+}
+.opacity0 {
+    opacity: 0;
+}

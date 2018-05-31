@@ -9,11 +9,12 @@ class IndexContainer extends Component {
 
     }
     render() {
-        let { user_info } = this.props;
+        let { user_info, test } = this.props;
         return(
             <Fragment>
                 <Index
                     user_info={user_info}
+                    test = {test}
                     />
             </Fragment>
         )
@@ -27,9 +28,9 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProp = (dispatch,props) => {
     return {
-        actFetchDataApiReques: ()=>{
-            dispatch(ActionAPI.actFetchDataApiReques())
+        test: (endPoint, method, data)=>{
+            dispatch(ActionAPI.callAuthenAPI(endPoint, method, data))
         }
     }
 }
-export default connect(mapStateToProps,null)(IndexContainer);
+export default connect(mapStateToProps,mapDispatchToProp)(IndexContainer);

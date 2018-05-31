@@ -11,7 +11,7 @@ export default class SignIn extends Component {
         super(props);
         this.state = {
             sign_info: {
-                email: 'longdd21081994@gmail.com',
+                email: 'longldseatchit@gmail.com',
                 pass_word: 'longkhanh',
                 re_pass_word: 'longkhanh'
             },
@@ -159,9 +159,9 @@ export default class SignIn extends Component {
                                     </div>
                                 </div>
                             </div>
+                            <div className="col-md-3"></div>
                         </div>
                     </form>
-                    <div className="col-md-3"></div>
                 </ReactCSSTransitionGroup>
             </Fragment>
         )

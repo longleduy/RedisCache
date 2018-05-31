@@ -4,15 +4,16 @@ import { callApi } from '../../utils/api_caller'
 import * as validate from '../../contants/accounts/sign'
 import { Link } from 'react-router-dom'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { EPIPE } from 'constants';
 export default class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
             userInfo: {
-                user_name: '',
-                pass_word: '',
-                re_pass_word: '',
-                email: ''
+                user_name: 'LongDuy',
+                pass_word: 'longkhanh',
+                re_pass_word: 'longkhanh',
+                email: 'longldseatchit@gmail.com'
             },
             statusSignUp: {
                 success: false
@@ -72,24 +73,14 @@ export default class SignUp extends Component {
     onSignUp = async (e) => {
         e.preventDefault();
         let res = await callApi('user/sign_up', 'POST', this.state.userInfo);
-        this.setState({
-            userInfo: {
-                user_name: '',
-                pass_word: '',
-                re_pass_word: '',
-                email: ''
-            },
-            statusSignUp: {
-                success: res.data.status
-            }
-        })
-        this.clearText();
-        $('#sign_lbl').text("Success");
-        $('#sign_lbl').addClass("success-sign-up");
-        setTimeout(() => {
-            $('#sign_lbl').text("Sign Up");
-            $('#sign_lbl').removeClass("success-sign-up");
-        }, 3000)
+        if (res.status == 200) {
+            this.setState({
+                statusSignUp: {
+                    success: true
+                }
+            })
+            this.clearText();
+        }
     }
     onValidEmail = async () => {
         let _email = this.state.userInfo.email;
@@ -134,6 +125,29 @@ export default class SignUp extends Component {
         else {
             return false;
         }
+    }
+    verifyEmailAvtive = () => {
+        $('.sign_form').addClass('opacity0');
+        let email = this.state.userInfo.email;
+        let index = email.indexOf('@');
+        let emailView = `${email.substring(0,index-4)}****${email.substring(index,email.length)}`
+        return <Fragment>
+            <div className="col-md-8 verify-email" onMouseLeave={this.closeVerifyForm}>
+                <label className="sign-up-success">Success</label>
+                <label className="verify-noti">We now need to verify your email address
+                    . We've send an email to {emailView} to verify your address. Please
+                    click the link in that email to continue.
+                                </label>
+            </div>
+        </Fragment>
+    }
+    closeVerifyForm = () => {
+        this.setState({
+            statusSignUp: {
+                success: false
+            }
+        })
+            $('.sign_form').removeClass('opacity0');
     }
     render() {
         let { user_name, pass_word, re_pass_word, email } = this.state.userInfo;
@@ -212,9 +226,11 @@ export default class SignUp extends Component {
                                     </div>
                                 </div>
                             </div>
+                            <div className="col-md-3"></div>
+                            {this.state.statusSignUp.success && this.verifyEmailAvtive()}
                         </div>
                     </form>
-                    <div className="col-md-3"></div>
+
                 </ReactCSSTransitionGroup>
             </Fragment >
         )

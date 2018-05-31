@@ -59,9 +59,8 @@ class Header extends Component {
     }
     onLogOut = (e) => {
         const { history, signOut } = this.props;
-        AuthenCommon.deAuthenticateUser();
         signOut();
-        history.push('/');
+        this.props.history.push('/');
     }
     render() {
         let { user_info } = this.props;

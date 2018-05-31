@@ -3,7 +3,8 @@ import * as ActionTypes from '../contants/ActionTypes';
 const _initialState = {
     isAuthen: false,
     user_name: "",
-    level: ""
+    level: "",
+    status: 'DEFAULT'
 }
 const user_info = (state = _initialState, action) => {
     switch (action.type) {
@@ -12,14 +13,15 @@ const user_info = (state = _initialState, action) => {
                 ...state,
                 isAuthen: true,
                 user_name: action.data.user_name,
-                level: action.data.permisson
+                level: action.data.permisson,
             };
         case ActionTypes.SIGN_OUT:
             return {
                 ...state,
                 isAuthen: false,
                 user_name: "",
-                level: ""
+                level: "",
+                status: action.status
             }
         default:
             return { ...state };
