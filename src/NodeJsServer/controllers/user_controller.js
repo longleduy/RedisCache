@@ -9,6 +9,7 @@ import { SECRET_KEY } from '../constants/secret_key';
 import { emailSender } from '../config/email_sender';
 import { task } from '../config/cron_job_send_email'
 exports.sign_up = async (req, res) => {
+    req.session.user = "A";
     try {
         let email = await user.find({ email: req.body.email })
         if (email.length > 0) {
@@ -33,7 +34,8 @@ exports.sign_up = async (req, res) => {
                     })
                 }
                 else {
-                    res.status(200).json({
+                    req.session.mail = "Long"
+                    res.status(200).send({
                         status: true
                     })
                     try {
@@ -93,6 +95,7 @@ export const sign_in = async (req, res) => {
                     user_name: data[0].user_name,
                     permisson: data[0].permisson
                 }
+                req.session.payload = payload;
                 res.status(200).json({
                     message: validate_message.EMAIL_INVALID,
                     token: jwt.sign(payload, SECRET_KEY, { expiresIn: '1h' })
@@ -142,6 +145,18 @@ export const verifyEmail = async (req, res) => {
         throw err
     }
 }
+export const signOut = async (req,res) => {
+    try {
+      await  req.session.destroy();
+      res.status(200).json({
+        message : 'Success'
+    })
+    } catch (error) {
+        res.status(202).json({
+            message : 'Sign Out failed'
+        })
+    }
+}
 export const startEmailSender = (req, res) => {
     task.start();
 }
@@ -150,4 +165,8 @@ export const stopEmailSender = (req, res) => {
 }
 export const destroyEmailSender = (req, res) => {
     task.destroy();
+}
+export const viewSession = (req, res) => {
+    req.session.demo ="dd";
+    res.json("")
 }

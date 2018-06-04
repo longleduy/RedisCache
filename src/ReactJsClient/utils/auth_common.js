@@ -1,3 +1,5 @@
+import {store} from '../index'
+import * as Action from '../actions/action'
 //TODO: Check if a user is authenticated - check if a token is saved in Local Storage
 export const isUserAuthenticated = () => {
     return localStorage.getItem('token') !== null;

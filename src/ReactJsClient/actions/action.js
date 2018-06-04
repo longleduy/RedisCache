@@ -1,6 +1,7 @@
 import * as ActionTypes from '../contants/ActionTypes';
 import callApi from '../utils/api_caller';
 import * as AuthenCommon from '../utils/auth_common'
+import * as CallAPI from '../utils/api_caller'
 export const signInSucess = (data) => {
     return {
         type: ActionTypes.SIGN_IN_SUCCESS,
@@ -22,4 +23,5 @@ export const actFetchDataApiReques = () => {
             })
     }
 }
+
 

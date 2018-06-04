@@ -16,18 +16,30 @@ import Logo from "../../public/images/logo.png";
 import "font-awesome/css/font-awesome.min.css";
 // import "../public/css/materialui.min.css";
 import * as Common from '../ReactJsClient/utils/auth_common';
-import {signInSucess} from '../ReactJsClient/actions/action'
-
+import { signInSucess, signOut } from '../ReactJsClient/actions/action'
+import * as ActionAPI from './actions/action_api'
+import * as CallAPI from './utils/api_caller'
 //TODO: Khởi tạo store
-import { applyMiddleware,createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 //TODO: Import reducer
 import myReducer from './reducers/index';
 //TODO: Kết nối react với redux
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-const store = createStore(myReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),applyMiddleware(thunk));
-if(Common.getToken()){
-    let infoUser = jwt.decode(Common.getToken());
-    store.dispatch(signInSucess(infoUser))
+export const store = createStore(myReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk));
+
+if (Common.getToken()) {
+    try {
+        let infoUser = jwt.decode(Common.getToken());
+        if (infoUser)
+            store.dispatch(signInSucess(infoUser))
+        else {
+            CallAPI.callApi('user/sign_out', 'GET', null);
+            store.dispatch(signOut('BAD_REQUEST'))
+        }
+    } catch (error) {
+        CallAPI.callApi('user/sign_out', 'GET', null);
+        store.dispatch(signOut('BAD_REQUEST'))
+    }
 }
-ReactDOM.render(<div><Favicon url={Logo}/><Provider store={store}><Router><App  /></Router></Provider></div>,document.querySelector('#root'));
+ReactDOM.render(<div><Favicon url={Logo} /><Provider store={store}><Router><App /></Router></Provider></div>, document.querySelector('#root'));

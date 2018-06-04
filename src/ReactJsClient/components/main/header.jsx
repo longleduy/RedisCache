@@ -59,7 +59,7 @@ class Header extends Component {
     }
     onLogOut = (e) => {
         const { history, signOut } = this.props;
-        signOut();
+        signOut('DEFAULT');
         this.props.history.push('/');
     }
     render() {

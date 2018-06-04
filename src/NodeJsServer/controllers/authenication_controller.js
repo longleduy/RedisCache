@@ -6,12 +6,16 @@ export const authentication = async (req, res, next) => {
         let token = req.headers.authorization.replace("Beare ", "");
         try {
             let payload = await jwt.verify(token, SECRET_KEY);
-            let data = await user.findOne({ email: payload.email, user_name: payload.user_name }).exec();
-            if(data){
-                res.status(200).json({
-                    message: 'Success'
-                })
-               return next();
+            if(payload.email == req.session.payload.email){
+                let data = await user.findOne({ email: payload.email, user_name: payload.user_name }).exec();
+                if(data){
+                   return next();
+                }
+                else{
+                    res.status(202).json({
+                        message: 'Is not authen'
+                    })
+                }
             }
             else{
                 res.status(202).json({
@@ -19,6 +23,7 @@ export const authentication = async (req, res, next) => {
                 })
             }
         } catch (error) {
+            console.log(error)
             res.status(202).json({
                 message: 'Is not authen'
             })

@@ -9,6 +9,7 @@ import PropTypes from 'prop-types'
 import Header from '../../components/main/header.jsx'
 //Todo: Actions
 import * as  Action from '../../actions/action'
+import * as  ActionAPI from '../../actions/action_api'
 class HeaderContainer extends Component {
     constructor(props) {
         super(props);
@@ -31,8 +32,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProp = (dispatch, props) => {
     return {
-        signOut : () => {
-            dispatch(Action.signOut())
+        signOut : (status) => {
+            dispatch(ActionAPI.signOut(status))
         }
     }
 }

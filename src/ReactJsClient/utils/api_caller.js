@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { _API_URL, _API_NODEJS } from '../contants/ApiConfig';
 import * as Authentication from './auth_common'
-
+axios.defaults.withCredentials = true;
 export const callApi = (endpoint, method = 'GET', body) => {
     return axios({
         method: method,

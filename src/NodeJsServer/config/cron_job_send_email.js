@@ -23,7 +23,7 @@ export const task = cron.schedule('* * * * * *', async () => {
             console.log(error)
         }
     })
-})
+},false)
 const transporter = () => {
     return nodemailer.createTransport({
         host: 'smtp.gmail.com',

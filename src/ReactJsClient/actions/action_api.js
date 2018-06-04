@@ -7,7 +7,19 @@ export const callAuthenAPI = (endPoint, method = 'GET', data) => {
         try {
             let res = await CallAPI.callApiAuthen(endPoint, method, data)
             if (res.status == 202) {
-               dispatch(Action.signOut('BAD_REQUEST'));
+                dispatch(signOut('BAD_REQUEST')) 
+            }
+        } catch (error) {
+            throw error
+        }
+    }
+}
+export const signOut = (status) => {
+    return async (dispatch) => {
+        try {
+            let res = await CallAPI.callApi('user/sign_out','GET',null);
+            if(res.status == 200){
+                dispatch(Action.signOut(status));
             }
         } catch (error) {
             throw error
