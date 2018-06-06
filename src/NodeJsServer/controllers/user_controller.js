@@ -34,7 +34,6 @@ exports.sign_up = async (req, res) => {
                     })
                 }
                 else {
-                    req.session.mail = "Long"
                     res.status(200).send({
                         status: true
                     })
@@ -133,7 +132,7 @@ export const verifyEmail = async (req, res) => {
         let data = await user.findOneAndUpdate({ email: email, active: false }, { $set: { active: true } });
         if (data) {
             res.writeHead(301,
-                { Location: 'http://localhost:8085/sign_in' }
+                { Location: 'https://localhost:8085/sign_in' }
             );
             res.end();
         }
@@ -145,16 +144,37 @@ export const verifyEmail = async (req, res) => {
         throw err
     }
 }
-export const signOut = async (req,res) => {
+export const signOut = async (req, res) => {
     try {
-      await  req.session.destroy();
-      res.status(200).json({
-        message : 'Success'
-    })
+        await req.session.destroy();
+        res.status(200).json({
+            message: 'Success'
+        })
     } catch (error) {
         res.status(202).json({
-            message : 'Sign Out failed'
+            message: 'Sign Out failed'
         })
+    }
+}
+export const signGoogleAuth = async (req, res) => {
+    try {
+        let userInfo = req.session.user;
+        let payload = {
+            email: userInfo.email,
+            user_name: userInfo.user_name,
+            permisson: userInfo.permisson
+        }
+        req.session.payload = payload;
+        let token = jwt.sign(payload, SECRET_KEY, { expiresIn: '1h' })
+        res.status(200).json({
+            message: validate_message.AUTH_SIGN_IN_SUCCESS,
+            token: token
+        })
+    } catch (error) {
+        res.status(202).json({
+            message: 'Auth login fail'
+        })
+        console.log(error)
     }
 }
 export const startEmailSender = (req, res) => {
@@ -167,6 +187,5 @@ export const destroyEmailSender = (req, res) => {
     task.destroy();
 }
 export const viewSession = (req, res) => {
-    req.session.demo ="dd";
-    res.json("")
+    console.log(req.session.payload);
 }

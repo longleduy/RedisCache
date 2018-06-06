@@ -26,8 +26,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[chunkhash].js',
-        //TODO: Sử dụng cho nested route (môi trường dev), mất cả buổi sáng vọc, khổ vlin
-        publicPath: 'http://localhost:8085/'
+        //Todo: Sử dụng cho nested route (môi trường dev), mất cả buổi sáng vọc, khổ vlin
+        publicPath: 'https://localhost:8085/'
     },
     module: {
         rules: [
@@ -52,7 +52,7 @@ module.exports = {
                 }],
                 test: /\.(s*)css$/
             },
-            //TODO: Load các loại file ( font, img...)
+            //Todo: Load các loại file ( font, img...)
             {
                 loader: 'file-loader',
                 test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.woff2$|\.eot$|\.ttf|\.mp3$|\.wav$/
@@ -77,7 +77,7 @@ module.exports = {
             template : 'src/ReactJsClient/index.html'
         })
     ],
-    //TODO: Trace log
+    //Todo: Trace log
     devtool: '#source-map',
     devServer,
     

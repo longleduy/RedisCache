@@ -1,6 +1,7 @@
 .sign_form {
     display: flex;
     align-items: center;
+    justify-content: center;
     .btn-sign-up {
         background-color: #455A64 !important;
         margin-top: 15px;
@@ -98,4 +99,21 @@ label.sign-up-success {
 }
 .opacity0 {
     opacity: 0;
+}
+img.auth-icon {
+    width: 7%;
+    margin: 0px 5px;
+}
+
+.col-md-12.auth-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 10px;
+    justify-content: center;
+}
+.auth-icon .view.zoom.Ripple-parent {
+    width: 9%;
+    border-radius: 50%;
+    margin: 0px 3px;
 }

@@ -37,8 +37,8 @@ export default class HomePublic extends Component {
         }, 500)
     }
     showHomePageTitle = (lists) => {
-       let result = lists.map((value,index)=>{
-           return <label style={{ display: 'none' }} className={`home-title-${index+1}`} >{value.title}</label>
+        let result = lists.map((value, index) => {
+            return <label key={index} style={{ display: 'none' }} className={`home-title-${index + 1}`} >{value.title}</label>
         })
         return result;
     }
@@ -46,7 +46,10 @@ export default class HomePublic extends Component {
         return (
             <Fragment>
                 <ReactCSSTransitionGroup transitionName="example"
-                    transitionAppear={true} transitionAppearTimeout={500}
+                    transitionAppear={true}
+                    transitionAppearTimeout={500}
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={500}
                 >
                     <div className="home-div">
                         <label className='home-big-title'>It's not a Bug, It's a Feauture</label>

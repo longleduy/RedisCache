@@ -12,7 +12,10 @@ export default class NotFoundPage extends Component {
     render() {
         return (
             <ReactCSSTransitionGroup transitionName="example"
-                transitionAppear={true} transitionAppearTimeout={500}
+                transitionAppear={true}
+                transitionAppearTimeout={500}
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={500}
             >
                 <div className="home-div">
                     <label className='not-found-big-title'>404</label>

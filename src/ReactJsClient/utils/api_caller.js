@@ -26,7 +26,7 @@ export const callApiAuthen = (endpoint, method = 'GET', body) => {
         url: `${_API_URL}/${endpoint}`,
         data: body,
         headers: {
-            'Authorization': token == null ? "notAuthen":`Beare ${token}`
+            'Authorization': token == null ? "notAuthen" : `Beare ${token}`
         }
     }).catch(err => {
         console.log(err)

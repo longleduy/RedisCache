@@ -1,4 +1,4 @@
-//TODO: Module
+//Todo: Module
 import ReactDOM from 'react-dom';
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
@@ -19,11 +19,11 @@ import * as Common from '../ReactJsClient/utils/auth_common';
 import { signInSucess, signOut } from '../ReactJsClient/actions/action'
 import * as ActionAPI from './actions/action_api'
 import * as CallAPI from './utils/api_caller'
-//TODO: Khởi tạo store
+//Todo: Khởi tạo store
 import { applyMiddleware, createStore } from 'redux';
-//TODO: Import reducer
+//Todo: Import reducer
 import myReducer from './reducers/index';
-//TODO: Kết nối react với redux
+//Todo: Kết nối react với redux
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 export const store = createStore(myReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk));

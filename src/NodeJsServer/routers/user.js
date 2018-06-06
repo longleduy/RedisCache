@@ -1,6 +1,7 @@
 import express from 'express';
 import * as user_controller from '../controllers/user_controller';
 import * as Authentication from '../controllers/authenication_controller'
+import passport from '../controllers/google_oauth2'
 const router = express.Router();
 
 router.post('/user/check_email', user_controller.check_email);
@@ -12,9 +13,18 @@ router.get('/user/verify/:email_endcoded', user_controller.verifyEmail);
 router.get('/admin/start_email_sender', user_controller.startEmailSender);
 router.get('/admin/stop_email_sender', user_controller.stopEmailSender);
 router.get('/admin/destroy_email_sender', user_controller.destroyEmailSender);
-router.post('/session/view',Authentication.authentication, user_controller.viewSession);
+router.post('/session/view', Authentication.authentication, user_controller.viewSession);
+router.post('/auth/gooogle_sign_in', user_controller.signGoogleAuth);
+router.get('/auth/google', passport.authenticate('google',
+    { scope: ['profile', 'email'], session: true }));
+router.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login', session: true }),
+    (req, res) => {
+        req.session.user = req.user
+        res.redirect('https://localhost:8085/confirm_auth_sign_in')
+    }
+);
 router.get('/session/save', (req, res) => {
-    console.log("destroy")
-    req.session.destroy();
+    res.send("Test")
 });
 module.exports = router;

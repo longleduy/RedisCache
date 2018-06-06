@@ -37,7 +37,7 @@ export const emailSender = (to, token) => {
             padding-right: 15px;
             padding-left: 15px;
             color: white;font-size:15px;">Thanks for sign up! We just need you verify your email address to complete setting up your account</p>
-                <a href="http://localhost:8000/user/verify/:${token}" style="text-align: center;text-align: center;
+                <a href="https://localhost:8000/user/verify/:${token}" style="text-align: center;text-align: center;
                 text-decoration: none;
                 background-color: white;
                 display: inline-block;

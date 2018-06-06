@@ -4,7 +4,7 @@ import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Fa, NavItem, NavLinkCont
 import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import * as ContainerRoutes from '../components/routes/container_routes.jsx'
 import requireAuth from '../containers/main/private_route_HOC.jsx'
-//TODO: Custom menu link
+//Todo: Custom menu link
 const MyNavLink = ({ label, to, activeOnlyWhenExact }) => {
     return (
         <Route path={to} exact={activeOnlyWhenExact}

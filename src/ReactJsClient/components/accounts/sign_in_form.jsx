@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router-dom'
-import { Input, Button, Fa } from 'mdbreact'
+import { Input, Button, Fa, View, Mask } from 'mdbreact'
 import { callApi } from '../../utils/api_caller'
-import {Link} from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import jwt from 'jsonwebtoken'
-import ReactCSSTransitionGroup  from 'react-addons-css-transition-group'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import * as Common from '../../utils/common'
-export default class SignIn extends Component {
+class SignIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,7 +23,7 @@ export default class SignIn extends Component {
         if (email != '' && pass_word != '' && re_pass_word != '' && this.onValidPassWord() == true) {
             return true;
         }
-        else{
+        else {
             return false;
         }
     }
@@ -42,13 +42,13 @@ export default class SignIn extends Component {
             this.setState({
                 status: ''
             });
-            let _text_label = $(e.target).attr('id') == 'email'?'Email address':'Pass word';
+            let _text_label = $(e.target).attr('id') == 'email' ? 'Email address' : 'Pass word';
             $(e.target).next('label').removeClass('err_label').text(_text_label);
         }
     }
     onSignIn = (e) => {
         e.preventDefault();
-        callApi('user/sign_in','POST',this.state.sign_info)
+        callApi('user/sign_in', 'POST', this.state.sign_info)
             .then(res => {
                 if (res.status != 200) {
                     this.setState({
@@ -63,7 +63,7 @@ export default class SignIn extends Component {
                     this.props.signInSucess(infoUser);
                     this.setState({
                         status: 'success'
-                    });                
+                    });
                     return true;
                 }
             })
@@ -88,17 +88,23 @@ export default class SignIn extends Component {
             return true;
         }
     }
+    signInAuth = (authenApplication) => {
+        window.location.href = 'https://localhost:8000/auth/google'
+    }
     render() {
-        let { email, pass_word, re_pass_word} = this.state.sign_info;
+        let { email, pass_word, re_pass_word } = this.state.sign_info;
         let { status } = this.state;
         if (status == 'success') {
             return <Redirect to='index' />
         }
         return (
             <Fragment>
-            <ReactCSSTransitionGroup transitionName = "example"
-            transitionAppear = {true} transitionAppearTimeout = {500}
-            >
+                <ReactCSSTransitionGroup transitionName="example"
+                    transitionAppear={true}
+                    transitionAppearTimeout={500}
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={500}
+                >
                     <form onSubmit={this.onSignIn}>
                         <div className="row">
                             <div className="col-md-3"></div>
@@ -157,6 +163,25 @@ export default class SignIn extends Component {
                                             className='label-sign'
                                         >Don't have account ? Sign Up now</Link>
                                     </div>
+                                    <div className="col-md-12 auth-icon">
+                                        <View zoom onClick={() => this.signInAuth('facebook')}>
+                                            <img src={require('../../../../public/images/icon/facebook.png')}
+                                                className="img-fluid"
+                                                title="Login with Facebook" />
+                                        </View>
+                                        <View zoom onClick={() => this.signInAuth('google')}>
+                                            <img src={require('../../../../public/images/icon/google.png')}
+                                                className="img-fluid" title="Login with Google" />
+                                        </View>
+                                        <View zoom onClick={() => this.signInAuth('twitter')}>
+                                            <img src={require('../../../../public/images/icon/twt.png')}
+                                                className="img-fluid" title="Login with Twitter" />
+                                        </View>
+                                        <View zoom onClick={() => this.signInAuth('github')}>
+                                            <img src={require('../../../../public/images/icon/github.png')}
+                                                className="img-fluid" title="Login with Github" />
+                                        </View>
+                                    </div>
                                 </div>
                             </div>
                             <div className="col-md-3"></div>
@@ -167,3 +192,4 @@ export default class SignIn extends Component {
         )
     }
 }
+export default withRouter(SignIn)

@@ -5,9 +5,9 @@
  */
 import 'babel-polyfill';
 import app from './app';
-
+import fs from 'fs';
 var debug = require('debug')('unicron:server');
-var http = require('http');
+var https = require('https');
 
 /**
  * Get port from environment and store in Express.
@@ -15,12 +15,15 @@ var http = require('http');
 
 var port = normalizePort(process.env.PORT || '8000');
 app.set('port', port);
-
+var options = {
+  key: fs.readFileSync('privateKey.key'),
+  cert: fs.readFileSync('certificate.crt')
+};
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server = https.createServer(options,app);
 
 /**
  * Listen on provided port, on all network interfaces.

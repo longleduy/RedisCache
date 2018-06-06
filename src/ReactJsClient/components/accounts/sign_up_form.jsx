@@ -130,7 +130,7 @@ export default class SignUp extends Component {
         $('.sign_form').addClass('opacity0');
         let email = this.state.userInfo.email;
         let index = email.indexOf('@');
-        let emailView = `${email.substring(0,index-4)}****${email.substring(index,email.length)}`
+        let emailView = `${email.substring(0, index - 4)}****${email.substring(index, email.length)}`
         return <Fragment>
             <div className="col-md-8 verify-email" onMouseLeave={this.closeVerifyForm}>
                 <label className="sign-up-success">Success</label>
@@ -147,14 +147,17 @@ export default class SignUp extends Component {
                 success: false
             }
         })
-            $('.sign_form').removeClass('opacity0');
+        $('.sign_form').removeClass('opacity0');
     }
     render() {
         let { user_name, pass_word, re_pass_word, email } = this.state.userInfo;
         return (
             <Fragment>
                 <ReactCSSTransitionGroup transitionName="example"
-                    transitionAppear={true} transitionAppearTimeout={500}
+                    transitionAppear={true}
+                    transitionAppearTimeout={500}
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={500}
                 >
                     <form onSubmit={this.onSignUp}>
                         <div className="row">

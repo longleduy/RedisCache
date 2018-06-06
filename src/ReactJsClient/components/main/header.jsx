@@ -17,8 +17,11 @@ class Header extends Component {
         let isAuthen = AuthenCommon.isUserAuthenticated();
         if (isAuthen) {
             return <ReactCSSTransitionGroup transitionName="example"
-                transitionAppear={true} transitionAppearTimeout={500}
-            >
+                transitionAppear={true}
+                transitionAppearTimeout={500}
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={500}
+                >
                 <NavItem>
                     <NavLink onClick={this.onLogOut} to="#"><Fa icon="sign-out" />Sign out</NavLink>
                 </NavItem></ReactCSSTransitionGroup>
@@ -26,14 +29,20 @@ class Header extends Component {
         else {
             if (location.pathname == '/sign_up') {
                 return <ReactCSSTransitionGroup transitionName="example"
-                    transitionAppear={true} transitionAppearTimeout={500}
-                >
+                    transitionAppear={true}
+                    transitionAppearTimeout={500}
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={500}
+                    >
                     <NavItem>
                         <NavLink to="/sign_in"><Fa icon="sign-in" />Sign in</NavLink>
                     </NavItem></ReactCSSTransitionGroup>
             } else if (location.pathname == '/sign_in') {
                 return <ReactCSSTransitionGroup transitionName="example"
-                    transitionAppear={true} transitionAppearTimeout={500}
+                transitionAppear={true} 
+                transitionAppearTimeout={500}
+                transitionEnterTimeout={500} 
+                transitionLeaveTimeout={500}transitionLeaveTimeout={500}
                 >
                     <NavItem>
                         <NavLink to="/sign_up"><Fa icon="user-plus" />Sign up</NavLink>
@@ -42,14 +51,20 @@ class Header extends Component {
             }
             else {
                 return <Fragment><ReactCSSTransitionGroup transitionName="example"
-                    transitionAppear={true} transitionAppearTimeout={500}
-                >
+                    transitionAppear={true}
+                    transitionAppearTimeout={500}
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={500}
+                    >
                     <NavItem>
                         <NavLink to="/sign_in"><Fa icon="sign-in" />Sign in</NavLink>
                     </NavItem></ReactCSSTransitionGroup>
                     <ReactCSSTransitionGroup transitionName="example"
-                        transitionAppear={true} transitionAppearTimeout={500}
-                    >
+                        transitionAppear={true}
+                        transitionAppearTimeout={500}
+                        transitionEnterTimeout={500}
+                        transitionLeaveTimeout={500}
+                        >
                         <NavItem>
                             <NavLink to="/sign_up"><Fa icon="user-plus" />Sign up</NavLink>
                         </NavItem>
@@ -80,7 +95,7 @@ class Header extends Component {
         )
     }
 }
- Header.propTypes = {
-     history: PropTypes.object.isRequired
- }
+Header.propTypes = {
+    history: PropTypes.object.isRequired
+}
 export default Header;
