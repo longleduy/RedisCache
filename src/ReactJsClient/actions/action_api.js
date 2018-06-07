@@ -44,7 +44,7 @@ export const signInAuth = (authenApplication) => {
 export const confirmOk = () => {
     return async (dispatch) => {
         try {
-            let res = await CallAPI.callApi(`auth/gooogle_sign_in`, 'POST', null);
+            let res = await CallAPI.callApi(`auth/auth_sign_in`, 'POST', null);
             if (res.status == 200) {
                 AuthenCommon.setToken(res.data.token)
                 let infoUser = jwt.decode(res.data.token);

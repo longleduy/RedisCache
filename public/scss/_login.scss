@@ -47,35 +47,40 @@
         font-weight: bold;
     }
     .input-err {
-        border-bottom-color: $err_sign_color !important;;
+        border-bottom-color: $err_sign_color !important;
+        ;
     }
     input.form-control.input-err:focus {
         box-shadow: 0 1px 0 0 $err_sign_color !important;
         border-bottom-color: $err_sign_color !important;
     }
-    .error-input:focus{
+    .error-input:focus {
         box-shadow: 0 1px 0 0 $err_sign_color !important;
         border-bottom-color: $err_sign_color !important;
     }
-    .error-input{
+    .error-input {
         border-bottom-color: $err_sign_color !important;
     }
-    .success-sign-up{
+    .success-sign-up {
         color: $err_sign_color !important;
     }
 }
+
 .example-appear {
     opacity: 0.01;
- }
- .example-appear.example-appear-active {
+}
+
+.example-appear.example-appear-active {
     opacity: 1;
     transition: opacity 400ms ease-in;
- }
- label.title-lvl {
-    font-weight:  bold;
+}
+
+label.title-lvl {
+    font-weight: bold;
     font-size: 30px;
     color: white;
 }
+
 .verify-email {
     height: 400px;
     position: absolute;
@@ -84,22 +89,26 @@
     flex-direction: column;
     justify-content: center;
 }
+
 label.verify-noti {
-    font-size:  20px;
-    font-weight:  bold;
-    color:  white;
-    text-align:  center;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
 }
+
 label.sign-up-success {
-    text-align:  center;
+    text-align: center;
     font-size: 40px;
-    color:  white;
-    font-weight:  bold;
+    color: white;
+    font-weight: bold;
     margin-bottom: 20px;
 }
+
 .opacity0 {
     opacity: 0;
 }
+
 img.auth-icon {
     width: 7%;
     margin: 0px 5px;
@@ -112,8 +121,32 @@ img.auth-icon {
     padding: 10px 10px;
     justify-content: center;
 }
+
 .auth-icon .view.zoom.Ripple-parent {
     width: 9%;
     border-radius: 50%;
     margin: 0px 3px;
+}
+
+.confirm-box {
+    min-height: 200px;
+    position: absolute;
+    top: 35%;
+    left: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirm-box label.cancel-lbl {
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.confirm-box label.big-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    margin: 15px 0px
 }

@@ -12,9 +12,14 @@ import { store } from '../index'
 export default class Index extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            dropdownOpen: false,
+        };
     }
-    componentDidMount() {
-        // this.props.actFetchDataApiReques();
+    toggle = () => {
+        this.setState({
+            dropdownOpen: !this.state.dropdownOpen
+        });
     }
     testAUthen = () => {
         CallAPI.callApi('session/save', 'GET', null);
@@ -24,6 +29,7 @@ export default class Index extends Component {
     }
     render() {
         let { user_info } = this.props;
+        let level = user_info.level.toLowerCase();
         return (
             <Fragment>
                 <ReactCSSTransitionGroup transitionName="example"
@@ -33,11 +39,11 @@ export default class Index extends Component {
                     transitionLeaveTimeout={500}
                 >
                     <div className="home-div">
-                        <img className="img-lvl" src={require("../../../public/images/master-lvl.png")} />
+                        <img className="img-lvl" src={require(`../../../public/images/${level ? level : 'member'}-lvl.png`)} />
                         <label className="title-lvl">{user_info.level} Level</label>
                     </div>
-                    <Button onClick={this.testAUthen}>Save</Button>
-                    <Button onClick={this.view}>View</Button>
+                    {/* <Button onClick={this.testAUthen}>Save</Button>
+                    <Button onClick={this.view}>View</Button> */}
                 </ReactCSSTransitionGroup>
             </Fragment >
         )

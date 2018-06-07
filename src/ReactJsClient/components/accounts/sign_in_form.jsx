@@ -15,7 +15,11 @@ class SignIn extends Component {
                 pass_word: 'longkhanh',
                 re_pass_word: 'longkhanh'
             },
-            status: ''
+            status: '',
+            signAuth: {
+                viewBox: false,
+                provider: ''
+            }
         }
     }
     validateForm = () => {
@@ -88,12 +92,31 @@ class SignIn extends Component {
             return true;
         }
     }
-    signInAuth = (authenApplication) => {
-        window.location.href = 'https://localhost:8000/auth/google'
+    signInAuth = () => {
+        let {provider} = this.state.signAuth
+        window.location.href = `https://localhost:8000/auth/${provider}`
+    }
+    showBox = (authenApplication) => {
+        this.setState({
+            signAuth: {
+                viewBox: true,
+                provider: authenApplication
+            }
+        })
+    }
+    cancelBox = () => {
+        this.setState({
+            signAuth: {
+                viewBox: false,
+                provider: ''
+            }
+        })
     }
     render() {
         let { email, pass_word, re_pass_word } = this.state.sign_info;
         let { status } = this.state;
+        let { viewBox, provider } = this.state.signAuth;
+        let providerView = provider.toUpperCase();
         if (status == 'success') {
             return <Redirect to='index' />
         }
@@ -108,88 +131,105 @@ class SignIn extends Component {
                     <form onSubmit={this.onSignIn}>
                         <div className="row">
                             <div className="col-md-3"></div>
-                            <div className="col-md-6 sign_form">
-                                <div className="row">
-                                    <div className="col-md-12 div-user-img">
-                                        <span className="big-title" id='sign_lbl'>Sign In</span>
-                                    </div>
-                                    <div className="col-md-12">
-                                        <Input
-                                            label="Email address"
-                                            id="email"
-                                            name="email"
-                                            ref="email"
-                                            defaultValue={email}
-                                            onChange={this.onChange}
-                                            onBlur={this.onValidEmail}
-                                            onClick={this.cleanError}
-                                            autoComplete="off" />
-                                    </div>
-                                    <div className="col-md-6">
-                                        <Input
-                                            label="Pass word" type="password"
-                                            id="pass_word"
-                                            name="pass_word"
-                                            ref="pass_word"
-                                            defaultValue={pass_word}
-                                            onChange={this.onChange}
-                                            onKeyUp={this.onValidPassWord}
-                                            onClick={this.cleanError}
-                                            autoComplete="off" />
-                                    </div>
-                                    <div className="col-md-6">
-                                        <Input
-                                            label="Repass word" type="password"
-                                            id="re_pass_word"
-                                            name="re_pass_word"
-                                            ref="re_pass_word"
-                                            defaultValue={re_pass_word}
-                                            onChange={this.onChange}
-                                            onKeyUp={this.onValidPassWord}
-                                            autoComplete="off" />
-                                    </div>
-                                    <div className="col-md-12">
-                                        <Button
-                                            block
-                                            className="btn-sign-up"
-                                            id="sign_in_btn"
-                                            type="submit"
-                                            style={this.validateForm() ? null : { pointerEvents: 'none' }}
-                                        >{this.validateForm() ? 'Sign In' : 'Please! Finish this form'}</Button>
-                                    </div>
-                                    <div className="col-md-12">
-                                        <Link
-                                            to='/sign_up'
-                                            className='label-sign'
-                                        >Don't have account ? Sign Up now</Link>
-                                    </div>
-                                    <div className="col-md-12 auth-icon">
-                                        <View zoom onClick={() => this.signInAuth('facebook')}>
-                                            <img src={require('../../../../public/images/icon/facebook.png')}
-                                                className="img-fluid"
-                                                title="Login with Facebook" />
-                                        </View>
-                                        <View zoom onClick={() => this.signInAuth('google')}>
-                                            <img src={require('../../../../public/images/icon/google.png')}
-                                                className="img-fluid" title="Login with Google" />
-                                        </View>
-                                        <View zoom onClick={() => this.signInAuth('twitter')}>
-                                            <img src={require('../../../../public/images/icon/twt.png')}
-                                                className="img-fluid" title="Login with Twitter" />
-                                        </View>
-                                        <View zoom onClick={() => this.signInAuth('github')}>
-                                            <img src={require('../../../../public/images/icon/github.png')}
-                                                className="img-fluid" title="Login with Github" />
-                                        </View>
-                                    </div>
-                                </div>
-                            </div>
+                            {!viewBox && <div className="col-md-6 sign_form">
+                                        <div className="row">
+                                            <div className="col-md-12 div-user-img">
+                                                <span className="big-title" id='sign_lbl'>Sign In</span>
+                                            </div>
+                                            <div className="col-md-12">
+                                                <Input
+                                                    label="Email address"
+                                                    id="email"
+                                                    name="email"
+                                                    ref="email"
+                                                    defaultValue={email}
+                                                    onChange={this.onChange}
+                                                    onBlur={this.onValidEmail}
+                                                    onClick={this.cleanError}
+                                                    autoComplete="off" />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <Input
+                                                    label="Pass word" type="password"
+                                                    id="pass_word"
+                                                    name="pass_word"
+                                                    ref="pass_word"
+                                                    defaultValue={pass_word}
+                                                    onChange={this.onChange}
+                                                    onKeyUp={this.onValidPassWord}
+                                                    onClick={this.cleanError}
+                                                    autoComplete="off" />
+                                            </div>
+                                            <div className="col-md-6">
+                                                <Input
+                                                    label="Repass word" type="password"
+                                                    id="re_pass_word"
+                                                    name="re_pass_word"
+                                                    ref="re_pass_word"
+                                                    defaultValue={re_pass_word}
+                                                    onChange={this.onChange}
+                                                    onKeyUp={this.onValidPassWord}
+                                                    autoComplete="off" />
+                                            </div>
+                                            <div className="col-md-12">
+                                                <Button
+                                                    block
+                                                    className="btn-sign-up"
+                                                    id="sign_in_btn"
+                                                    type="submit"
+                                                    style={this.validateForm() ? null : { pointerEvents: 'none' }}
+                                                >{this.validateForm() ? 'Sign In' : 'Please! Finish this form'}</Button>
+                                            </div>
+                                            <div className="col-md-12">
+                                                <Link
+                                                    to='/sign_up'
+                                                    className='label-sign'
+                                                >Don't have account ? Sign Up now</Link>
+                                            </div>
+                                            <div className="col-md-12 auth-icon">
+                                                <View zoom onClick={() => this.showBox('facebook')}>
+                                                    <img src={require('../../../../public/images/icon/facebook.png')}
+                                                        className="img-fluid"
+                                                        title="Login with Facebook" />
+                                                </View>
+                                                <View zoom onClick={() => this.showBox('google')}>
+                                                    <img src={require('../../../../public/images/icon/google.png')}
+                                                        className="img-fluid" title="Login with Google" />
+                                                </View>
+                                                <View zoom onClick={() => this.showBox('twitter')}>
+                                                    <img src={require('../../../../public/images/icon/twt.png')}
+                                                        className="img-fluid" title="Login with Twitter" />
+                                                </View>
+                                                <View zoom onClick={() => this.showBox('github')}>
+                                                    <img src={require('../../../../public/images/icon/github.png')}
+                                                        className="img-fluid" title="Login with Github" />
+                                                </View>
+                                            </div>
+                                        </div>
+                                    </div>}
                             <div className="col-md-3"></div>
+                                    {viewBox &&
+                                        <ReactCSSTransitionGroup transitionName="example"
+                                            transitionAppear={true}
+                                            transitionAppearTimeout={500}
+                                            transitionEnterTimeout={500}
+                                            transitionLeaveTimeout={500}
+                                        >
+                                            <div className="col-md-6 confirm-box">
+                                                <img src={require(`../../../../public/images/icon/${provider}-logo.png`)} className="logo" />
+                                                <label className="big-title">Sign In with {providerView} Authentication ?</label>
+                                                <div>
+                                                    <Button className="btn btn-sign-up" onClick={this.signInAuth}>Acept</Button>
+                                                    <label className="cancel-lbl" onClick={this.cancelBox}>Cancel</label>
+                                                </div>
+                                            </div>
+                                        </ReactCSSTransitionGroup>
+                                    }
                         </div>
                     </form>
                 </ReactCSSTransitionGroup>
             </Fragment>
-        )
-    }
-}
+                    )
+                }
+            }
 export default withRouter(SignIn)

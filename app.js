@@ -1,17 +1,14 @@
 
-import express from 'express';
-import http from 'http';
-import fs from 'fs';
-import bodyParser from 'body-parser';
-import path from 'path';
-import mongoose from 'mongoose';
-import favicon from 'serve-favicon';
+import express from 'express'
+import bodyParser from 'body-parser'
+import path from 'path'
+import favicon from 'serve-favicon'
 import redis from 'redis'
 import redisConnect from 'connect-redis'
 import session from 'express-session'
-import cors from 'cors'
-import db from './src/NodeJsServer/config/db';
-import user from './src/NodeJsServer/routers/user';
+import db from './src/NodeJsServer/config/db'
+import user from './src/NodeJsServer/routers/user'
+import auth from './src/NodeJsServer/routers/auth_sign_in'
 import passport from 'passport'
 
 const client = redis.createClient();
@@ -43,4 +40,5 @@ app.use(function (req, res, next) {
     next();
 });
 app.use('/', user);
+app.use('/auth', auth);
 export default app;

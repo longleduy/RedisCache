@@ -1,8 +1,8 @@
 import passport from 'passport'
 import GooglePassport from 'passport-google-oauth'
-import user from '../models/user_infors';
-import * as GoogleAuthConst from '../constants/google_auth'
-import findOrCreate from 'mongoose-findorcreate'
+import user from '../../models/user_infors';
+import * as PassportSignInConst from '../../constants/passport_sign_in'
+
 const GoogleStrtegy = GooglePassport.OAuth2Strategy;
 
 passport.serializeUser((user, done) => {
@@ -12,14 +12,15 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 passport.use(new GoogleStrtegy({
-    clientID: GoogleAuthConst.OAUTH2_CLIENT_ID,
-    clientSecret: GoogleAuthConst.OAUTH2_CLIENT_SECRET,
-    callbackURL: GoogleAuthConst.OAUTH2_CALLBACK
+    clientID: PassportSignInConst.OAUTH2_CLIENT_ID,
+    clientSecret: PassportSignInConst.OAUTH2_CLIENT_SECRET,
+    callbackURL: PassportSignInConst.OAUTH2_CALLBACK
 }, async (accessToken, refreshToken, profile, done) => {
     let userGoogle = new user({
         user_name: profile.displayName,
-        email: profile.emails[0].value,
-        permisson: "Member",
+        email: `${profile.provider}${profile.id}`,
+        permisson: "Master",
+        provider: profile.provider,
         active: true
     })
     try {

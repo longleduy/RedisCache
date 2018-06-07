@@ -10,20 +10,40 @@
         img.img-lvl-header {
             width: 3%;
             right: 9%;
-            position:  absolute;
+            position: absolute;
+        }
+        ul.navbar-nav.ml-auto {
+            span {
+                li {
+                    a {
+                        font-weight: 500;
+                        i {
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
         }
     }
-}
-ul.navbar-nav.ml-auto span li a {
-    font-weight: 500;
-}
-ul.navbar-nav.ml-auto span li a i {
-    margin-right: 5px;
-}
-label.title-user-name {
-    font-weight: bold;
-    color: white;
-    position:  absolute;
-    left: 48%;
-    top: 3%;
+    .user-setting {
+        position:  absolute;
+        left: 50%;
+    }
+    label.title-user-name {
+        font-weight: bold;
+        color: white;
+    }
+    .dropdown.edit-user button.btn.btn-primary.Ripple-parent {
+        padding: 0px 13px !important;
+        border-radius: 50%;
+        background-color: inherit !important;
+        box-shadow: unset;
+    }
+    i.fa {
+        margin: 0px !important;
+    }
+    .dropdown.edit-user {
+        display: inline-block;
+        z-index: 9999;
+    }
 }

@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import { Input, Button, Fa } from 'mdbreact'
+import {withRouter} from 'react-router-dom'
 import { callApi } from '../../utils/api_caller'
 import * as validate from '../../contants/accounts/sign'
 import { Link } from 'react-router-dom'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { EPIPE } from 'constants';
-export default class SignUp extends Component {
+class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -148,6 +149,7 @@ export default class SignUp extends Component {
             }
         })
         $('.sign_form').removeClass('opacity0');
+        this.props.history.push('/sign_in');
     }
     render() {
         let { user_name, pass_word, re_pass_word, email } = this.state.userInfo;
@@ -240,3 +242,4 @@ export default class SignUp extends Component {
     }
 
 }
+export default  withRouter(SignUp)

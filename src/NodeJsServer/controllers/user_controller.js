@@ -1,13 +1,11 @@
-import bcrypt from 'bcrypt';
-import session from 'express-session';
-import user from '../models/user_infors';
-import email from '../models/email_verifys';
+import jwt from 'jsonwebtoken';
 import * as hash from '../config/hash';
 import * as validate_message from '../constants/valid_message';
-import jwt from 'jsonwebtoken';
+import * as Link from '../constants/link'
 import { SECRET_KEY } from '../constants/secret_key';
 import { emailSender } from '../config/email_sender';
 import { task } from '../config/cron_job_send_email'
+import user from '../models/user_infors';
 exports.sign_up = async (req, res) => {
     req.session.user = "A";
     try {
@@ -24,6 +22,7 @@ exports.sign_up = async (req, res) => {
                 pass_word: a,
                 email: req.body.email,
                 permisson: "Master",
+                provider: 'React&NodeJs',
                 active: false
             });
             _new_user.save((err, data) => {
@@ -132,7 +131,7 @@ export const verifyEmail = async (req, res) => {
         let data = await user.findOneAndUpdate({ email: email, active: false }, { $set: { active: true } });
         if (data) {
             res.writeHead(301,
-                { Location: 'https://localhost:8085/sign_in' }
+                { Location: Link.SIGN_IN }
             );
             res.end();
         }
@@ -156,13 +155,14 @@ export const signOut = async (req, res) => {
         })
     }
 }
-export const signGoogleAuth = async (req, res) => {
+export const signAuth = async (req, res) => {
     try {
-        let userInfo = req.session.user;
+        let userInfo = req.session.passport.user;
         let payload = {
             email: userInfo.email,
             user_name: userInfo.user_name,
-            permisson: userInfo.permisson
+            permisson: userInfo.permisson,
+            application: userInfo.application
         }
         req.session.payload = payload;
         let token = jwt.sign(payload, SECRET_KEY, { expiresIn: '1h' })
