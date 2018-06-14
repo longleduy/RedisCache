@@ -1,13 +1,13 @@
 import jwt from 'jsonwebtoken';
 import * as hash from '../config/hash';
-import * as validate_message from '../constants/valid_message';
+import * as ValidateMessage from '../constants/valid_message';
 import * as Link from '../constants/link'
 import { SECRET_KEY } from '../constants/secret_key';
 import { emailSender } from '../config/email_sender';
 import { task } from '../config/cron_job_send_email'
 import user from '../models/user_infors';
+import { client } from '../../../app'
 exports.sign_up = async (req, res) => {
-    req.session.user = "A";
     try {
         let email = await user.find({ email: req.body.email })
         if (email.length > 0) {
@@ -16,13 +16,13 @@ exports.sign_up = async (req, res) => {
             })
         }
         else {
-            let a = await hash.hash_pass_async(req.body.pass_word);
+            let pass_word = await hash.hash_pass_async(req.body.pass_word);
             let _new_user = new user({
                 user_name: req.body.user_name,
-                pass_word: a,
+                pass_word: pass_word,
                 email: req.body.email,
-                permisson: "Master",
-                provider: 'React&NodeJs',
+                permisson: "Imortal",
+                provider: 'main',
                 active: false
             });
             _new_user.save((err, data) => {
@@ -39,7 +39,7 @@ exports.sign_up = async (req, res) => {
                     try {
                         let email = req.body.email;
                         let emailEncoded = new Buffer(email).toString('base64');
-                        emailSender(email, emailEncoded);
+                        emailSender(email, emailEncoded,'SIGN_UP_VERIFY');
                     } catch (error) {
                         let emailFailed = new email({
                             email: req.body.email
@@ -59,13 +59,13 @@ export const check_email = (req, res) => {
         if (data.length > 0) {
             res.json({
                 status: false,
-                message: validate_message.EMAIL_EXISTS
+                message: ValidateMessage.EMAIL_EXISTS
             })
         }
         else {
             res.json({
                 status: true,
-                message: validate_message.EMAIL_INVALID
+                message: ValidateMessage.EMAIL_INVALID
             })
         }
     })
@@ -76,7 +76,7 @@ export const sign_in = async (req, res) => {
         if (data.length < 1) {
             res.status(202).json({
                 detail: 'email',
-                message: validate_message.EMAIL_IS_NOT_INVALID
+                message: ValidateMessage.EMAIL_IS_NOT_INVALID
             })
         }
         else {
@@ -84,30 +84,32 @@ export const sign_in = async (req, res) => {
             if (data[0].active == false) {
                 res.status(202).json({
                     detail: 'email',
-                    message: validate_message.ERROR_EMAIL_NOT_VERIFY
+                    message: ValidateMessage.ERROR_EMAIL_NOT_VERIFY
                 })
             }
             else if (status) {
                 let payload = {
                     email: data[0].email,
                     user_name: data[0].user_name,
-                    permisson: data[0].permisson
+                    permisson: data[0].permisson,
+                    provider: data[0].provider
                 }
                 req.session.payload = payload;
+                req.session.userInfo = data[0];
                 res.status(200).json({
-                    message: validate_message.EMAIL_INVALID,
+                    message: ValidateMessage.EMAIL_INVALID,
                     token: jwt.sign(payload, SECRET_KEY, { expiresIn: '1h' })
                 })
             }
             else {
                 res.status(202).json({
                     detail: 'pass_word',
-                    message: validate_message.WRONG_PASSWORD,
+                    message: ValidateMessage.WRONG_PASSWORD,
                 })
             }
         }
     } catch (error) {
-        console.log(validate_message.ERROR_MESSAGE);
+        console.log(ValidateMessage.ERROR_MESSAGE);
         console.log(error);
     }
 
@@ -119,7 +121,7 @@ export const get_info = async (req, res) => {
             res.json(data[0].user_name);
         }
     } catch (error) {
-        console.log(validate_message.ERROR_MESSAGE);
+        console.log(ValidateMessage.ERROR_MESSAGE);
         console.log(error);
     }
 
@@ -162,12 +164,12 @@ export const signAuth = async (req, res) => {
             email: userInfo.email,
             user_name: userInfo.user_name,
             permisson: userInfo.permisson,
-            application: userInfo.application
+            provider: userInfo.provider
         }
         req.session.payload = payload;
         let token = jwt.sign(payload, SECRET_KEY, { expiresIn: '1h' })
         res.status(200).json({
-            message: validate_message.AUTH_SIGN_IN_SUCCESS,
+            message: ValidateMessage.AUTH_SIGN_IN_SUCCESS,
             token: token
         })
     } catch (error) {
@@ -177,6 +179,54 @@ export const signAuth = async (req, res) => {
         console.log(error)
     }
 }
+export const changePassword = async (req, res) => {
+    try {
+        let { email } = req.session.payload;
+        let fieldValue = req.body;
+        let isMatch = await hash.compare_pass(fieldValue.currentPassword, req.session.userInfo.pass_word);
+        if (isMatch) {
+            let newPassword = await hash.hash_pass_async(fieldValue.newPassword);
+            let currentDate = new Date().toLocaleString();
+            let payload = {
+                passWord: newPassword,
+                currentDate: currentDate
+            }
+            //let data = await user.findOneAndUpdate({ email: req.session.userInfo.email }, { $set: { pass_word: newPassword } })
+            let key = `_changePassWord-${req.session.userInfo.email}`;
+            let reply = await client.setex(key, 60 * 5, JSON.stringify(payload));
+            let keyEndcoded = new Buffer(key).toString('base64');
+            let payloadSendEmail = {
+                keyEndcoded,
+                currentDate
+            }
+            if (reply) {
+                res.status(200).json({
+                    message: ValidateMessage.SUCCESS,
+                })
+                emailSender(req.session.userInfo.email,payloadSendEmail, 'CHANGE_PASSWORD_CONFIRM');
+            } 
+        }
+        else {
+            res.status(202).json({
+                errMessage: ValidateMessage.CURRENT_PASS_WORD_NOT_INVALID,
+                field: "currentPassword"
+            })
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(203).json({
+            errMessage: ValidateMessage.EXCEPTION,
+            field: ""
+        })
+    }
+}
+// export const confirmResetPassword = async (req, res) => {
+//     try {
+        
+//     } catch (error) {
+//         res.send('Time out!')
+//     }
+// }
 export const startEmailSender = (req, res) => {
     task.start();
 }

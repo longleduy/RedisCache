@@ -98,8 +98,16 @@ class Header extends Component {
                         <DropdownMenu>
                             <DropdownItem header>Setting</DropdownItem>
                             <DropdownItem>Edit profile</DropdownItem>
-                            <DropdownItem>Change passWord</DropdownItem>
-                            <DropdownItem >Something else here</DropdownItem>
+                            <DropdownItem >
+                                <Link to='/user/information'>
+                                    User information
+                                </Link>
+                            </DropdownItem>
+                            <DropdownItem>
+                            <Link to='/user/change_pass_word'>
+                                    Change password
+                                </Link>
+                            </DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </div>
@@ -110,7 +118,7 @@ class Header extends Component {
                     </NavbarNav>
                     <NavbarNav right>
                         {this.displayButtonSign()}
-                        {user_info.isAuthen && <img className="img-lvl-header" src={require(`../../../../public/images/${level}-lvl.png`)} />}
+                        {user_info.isAuthen && <img className="img-lvl-header" src={require(`../../../../public/images/rank/${level}-rank.png`)} />}
                     </NavbarNav>
                 </Navbar>
             </div>

@@ -10,11 +10,17 @@ import db from './src/NodeJsServer/config/db'
 import user from './src/NodeJsServer/routers/user'
 import auth from './src/NodeJsServer/routers/auth_sign_in'
 import passport from 'passport'
-
-const client = redis.createClient();
+import Bluebird  from 'bluebird'
+Bluebird.promisifyAll(redis.RedisClient.prototype)
+Bluebird.promisifyAll(redis.Multi.prototype)
+export const client =  redis.createClient()
 const app = express();
 const RedisStore = redisConnect(session);
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+client.on('connect', function() {
+    console.log('RedisDB connected');
+});
 app.use(bodyParser.json());
 app.use(urlencodedParser);
 app.use(session({
@@ -34,9 +40,10 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(function (req, res, next) {
+    console.log(req.path)
     res.header('Access-Control-Allow-Origin', req.headers.origin);
     res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept, Authorization ');
     next();
 });
 app.use('/', user);

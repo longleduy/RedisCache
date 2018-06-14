@@ -4,7 +4,7 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Launch ReactJs Debug",
+            "name": "Launch Chrome",
             "url": "https://localhost:8085",
             "webRoot": "${workspaceFolder}"
         },
@@ -21,7 +21,8 @@
                 "--require",
                 "babel-register"
             ],
-            "sourceMaps": true
+            "sourceMaps": true,
+            "smartStep": true
         },
         {
             "type": "node",
@@ -33,7 +34,7 @@
             "protocol": "inspector",
             "stopOnEntry": false,
             "runtimeArgs": [
-                "--nolazy",
+                "--lazy",
                 "--require",
                 "babel-register"
             ],

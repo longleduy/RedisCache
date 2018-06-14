@@ -16,15 +16,16 @@ passport.use(new GoogleStrtegy({
     clientSecret: PassportSignInConst.OAUTH2_CLIENT_SECRET,
     callbackURL: PassportSignInConst.OAUTH2_CALLBACK
 }, async (accessToken, refreshToken, profile, done) => {
+    let email = `${profile.provider}${profile.id}`
     let userGoogle = new user({
         user_name: profile.displayName,
-        email: `${profile.provider}${profile.id}`,
-        permisson: "Master",
+        email: email,
+        permisson: "Divine",
         provider: profile.provider,
         active: true
     })
     try {
-        let data = await user.findOne({ email: profile.emails[0].value });
+        let data = await user.findOne({ email: email });
         if (data) {
             return done(null, data)
         }

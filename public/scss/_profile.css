@@ -1,0 +1,39 @@
+.rank-icon {
+    display: flex;
+    justify-content: center;
+}
+
+.user-info-form {
+    display: flex;
+    flex-direction: row;
+}
+
+label.user-info-big-title {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info>div label.col-md-6:nth-child(odd) {
+    font-weight: bold;
+}
+
+.user-info>div label {
+    margin: 8px 0px;
+}
+
+.user-info>div label {
+    font-size: 18px;
+}
+
+img.img-lvl {
+    width: 200px;
+    height: 200px;
+}

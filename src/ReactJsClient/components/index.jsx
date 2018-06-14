@@ -39,11 +39,11 @@ export default class Index extends Component {
                     transitionLeaveTimeout={500}
                 >
                     <div className="home-div">
-                        <img className="img-lvl" src={require(`../../../public/images/${level ? level : 'member'}-lvl.png`)} />
-                        <label className="title-lvl">{user_info.level} Level</label>
+                    <div className = 'col-md-6 rank-icon'>
+
                     </div>
-                    {/* <Button onClick={this.testAUthen}>Save</Button>
-                    <Button onClick={this.view}>View</Button> */}
+                        <img className="img-lvl" src={require(`../../../public/images/rank/${level ? level : 'legend'}-rank.png`)} />
+                    </div>
                 </ReactCSSTransitionGroup>
             </Fragment >
         )

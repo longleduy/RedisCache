@@ -12,19 +12,19 @@ export const authentication = async (req, res, next) => {
                    return next();
                 }
                 else{
-                    res.status(202).json({
+                    res.status(204).json({
                         message: 'Is not authen'
                     })
                 }
             }
             else{
-                res.status(202).json({
+                res.status(204).json({
                     message: 'Is not authen'
                 })
             }
         } catch (error) {
             console.log(error)
-            res.status(202).json({
+            res.status(204).json({
                 message: 'Is not authen'
             })
         }

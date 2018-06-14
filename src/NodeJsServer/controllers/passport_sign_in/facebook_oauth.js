@@ -20,7 +20,7 @@ passport.use(new FacebookStrategy({
     let userFacebook = new user({
         user_name: profile.displayName,
         email: email,
-        permisson: "Member",
+        permisson: "Legend",
         provider: profile.provider,
         active: true
     })

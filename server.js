@@ -8,22 +8,31 @@ import app from './app';
 import fs from 'fs';
 var debug = require('debug')('unicron:server');
 var https = require('https');
-
+var http = require('http');
+//import redis from 'redis';
 /**
  * Get port from environment and store in Express.
  */
 
 var port = normalizePort(process.env.PORT || '8000');
 app.set('port', port);
-var options = {
-  key: fs.readFileSync('privateKey.key'),
-  cert: fs.readFileSync('certificate.crt')
-};
+// var options = {
+//   key: fs.readFileSync('privateKey.key'),
+//   cert: fs.readFileSync('certificate.crt')
+// };
+// var options = {
+//   key: fs.readFileSync( './ssl/localhost.key' ),
+//   cert: fs.readFileSync( './ssl/localhost.cert' ),
+//   requestCert: false,
+//   rejectUnauthorized: false
+// };
+
 /**
  * Create HTTP server.
  */
 
-var server = https.createServer(options,app);
+//var server = https.createServer(options,app);
+var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -33,6 +42,7 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
+//export const redisServer = redis.createClient(6379, 'localhost');
 /**
  * Normalize a port into a number, string, or false.
  */

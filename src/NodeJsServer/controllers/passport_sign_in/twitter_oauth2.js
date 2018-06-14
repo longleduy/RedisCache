@@ -17,10 +17,11 @@ passport.use(new TwitterStrategy({
     callbackURL: PassportSignInConst.OAUTH2_TWITTER_CALLBACK,
     userProfileURL: "https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true"
 }, async (accessToken, refreshToken, profile, done) => {
+    let email = `${profile.provider}${profile.id}`
     let userTwitter = new user({
         user_name: profile.displayName,
-        email: `${profile.provider}${profile.id}`,
-        permisson: "Member",
+        email: email,
+        permisson: "Acient",
         provider: profile.provider,
         active: true
     })

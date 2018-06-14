@@ -7,7 +7,7 @@ export const callAuthenAPI = (endPoint, method = 'GET', data) => {
     return async (dispatch) => {
         try {
             let res = await CallAPI.callApiAuthen(endPoint, method, data)
-            if (res.status == 202) {
+            if (res.status == 204) {
                 dispatch(signOut('BAD_REQUEST'))
             }
         } catch (error) {
@@ -50,6 +50,23 @@ export const confirmOk = () => {
                 let infoUser = jwt.decode(res.data.token);
                 dispatch(Action.signInSucess(infoUser))
             }
+        } catch (error) {
+            throw error
+        }
+    }
+}
+export const changePassword = (data) => {
+    return async (dispatch) => {
+        try {
+            let res = await CallAPI.callApiAuthen(`user/change_pass_word`, 'POST', data);
+            let status = res.status;
+            if (status == 204) {
+                dispatch(signOut('BAD_REQUEST'))
+            }
+            else{
+                dispatch(Action.changePassword(status, res.data))
+            }
+                
         } catch (error) {
             throw error
         }

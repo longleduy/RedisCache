@@ -4,6 +4,8 @@ const _initialState = {
     isAuthen: false,
     user_name: "",
     level: "",
+    email:"",
+    provider:"",
     status: 'DEFAULT'
 }
 const user_info = (state = _initialState, action) => {
@@ -14,6 +16,8 @@ const user_info = (state = _initialState, action) => {
                 isAuthen: true,
                 user_name: action.data.user_name,
                 level: action.data.permisson,
+                email: action.data.email,
+                provider: action.data.provider
             };
         case ActionTypes.SIGN_OUT:
             return {
@@ -21,6 +25,8 @@ const user_info = (state = _initialState, action) => {
                 isAuthen: false,
                 user_name: "",
                 level: "",
+                email: "",
+                provider: "",
                 status: action.status
             }
         default:

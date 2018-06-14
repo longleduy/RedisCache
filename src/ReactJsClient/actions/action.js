@@ -15,12 +15,11 @@ export const signOut = (status = 'DEFAULT') => {
         status
     }
 }
-export const actFetchDataApiReques = () => {
-    return (dispatch) => {
-        return callApi('items', 'GET', null)
-            .then(res => {
-                actFetchDataApiRedux(res.data);
-            })
+export const changePassword = (status, data) => {
+    return {
+        type: ActionTypes.CHANGE_PASS_WORD,
+        status,
+        data
     }
 }
 

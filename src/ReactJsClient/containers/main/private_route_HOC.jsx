@@ -12,7 +12,7 @@ export default function (ComposedComponent) {
         }
 
         componentWillUpdate(nextProps) {
-            if (!nextProps.user_info.authenticated) {
+            if (!nextProps.user_info.isAuthen) {
                 this.props.history.push('/authen_failed');
             }
         }
