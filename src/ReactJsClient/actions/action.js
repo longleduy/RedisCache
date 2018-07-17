@@ -8,6 +8,12 @@ export const signInSucess = (data) => {
         data
     }
 }
+export const updateInfor = (data) => {
+    return {
+        type: ActionTypes.SIGN_IN_SUCCESS,
+        data
+    }
+}
 export const signOut = (status = 'DEFAULT') => {
     AuthenCommon.deAuthenticateUser();
     return {
@@ -22,5 +28,15 @@ export const changePassword = (status, data) => {
         data
     }
 }
-
+export const setTitle = (title) => {
+    return {
+        type: ActionTypes.SET_TITLE,
+        title,
+    }
+}
+export const delRequest = () => {
+    return {
+        type: ActionTypes.DEL_REQUEST
+    }
+}
 

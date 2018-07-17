@@ -10,6 +10,7 @@ export const emailSender = (to, data, fun) => {
         }
     });
     let html;
+    let subject;
     if (fun == 'SIGN_UP_VERIFY') {
         subject = 'Verify email address'
         html = htmlSignUpVerify(data)
@@ -17,6 +18,10 @@ export const emailSender = (to, data, fun) => {
     else if (fun == 'CHANGE_PASSWORD_CONFIRM') {
         html = htmlChangePasswordConfirm(data)
         subject = 'Reset password confirm'
+    }
+    else if(fun = 'RESET_PASSWORD_CONFIRM'){
+        html = htmlResetPasswordKey(data)
+        subject = 'Reset password key'
     }
     let mailOptions = {
         from: EmailSenderInfo.EMAIL_FROM,
@@ -98,7 +103,7 @@ const htmlChangePasswordConfirm = (data) => {
         </p>
         <label style="display: block;color: white">Reset time: ${data.currentDate}</label>
         <label style="display: block;margin: 20px 0px;color: #00e200;font-size: 15px;">If you did not request a password reset, please ignore this-email</label>
-            <a href="http://localhost:8000/user/verify/:${data.keyEndcoded}" style="text-align: center;text-align: center;
+            <a href="http://localhost:8000/user/confirm/:${data.keyEndcoded}" style="text-align: center;text-align: center;
             text-decoration: none;
             background-color: white;
             display: inline-block;
@@ -108,5 +113,39 @@ const htmlChangePasswordConfirm = (data) => {
             border-radius: 3px;box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);">Reset</a>
         </div>
     </body>
+    </html>`
+}
+const htmlResetPasswordKey = (data) => {
+    return `
+    <html>
+    
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Page Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    
+    <body style="font-family: Tahoma;">
+        <div style="    width: 45%;
+            background-color: #627898;
+            min-height: 315px;
+            margin: 0 auto;
+            text-align: center;">
+            <label style="font-weight: bold;
+            padding-top: 20px;
+            display: block;
+            font-size: 20px;
+            color: white;">React & NodeJs Application</label>
+            <p style="margin-top: 60px;
+            padding-right: 15px;
+            padding-left: 15px;
+            color: white;font-size:15px;">We recevied a request to reset your pass word to your React & NodeJs Application accounts .Use this key to reset your pass word
+            </p>
+            <label style="display: block;margin: 20px 0px;color: #00e200;font-size: 15px;">If you did not request a password reset, please ignore this-email</label>
+            <label style="font-weight:  bold;padding-top: 22px;width:  100%;float:  left;font-size: 30px;color:  white">${data}</label>
+        </div>
+    </body>
+    
     </html>`
 }

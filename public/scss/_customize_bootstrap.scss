@@ -44,10 +44,35 @@
 }
 
 .btn {
-    background-color: #455A64 !important;
+    background-color: $main_color_700 !important;
     height: 40px;
     line-height: 1px;
 }
+.btn-default:not([disabled]):not(.disabled):active, .btn-default:not([disabled]):not(.disabled).active, .show > .btn-default.dropdown-toggle {
+    background-color: $main_color_700 !important;
+}
 label{
     color: white !important
+}
+button.btn.btn-default.Ripple-parent.btn-icon {
+    background-color: unset !important;
+    box-shadow: unset;
+    padding: 8px;
+    height: unset;
+}
+
+button.btn.btn-default.Ripple-parent.btn-icon i {
+    margin: 0px !important;
+    font-size: 1.5em;
+}
+
+button.btn.btn-default.Ripple-parent.btn-icon:active {
+    background-color: unset !important;
+}
+button.btn.btn-default.Ripple-parent.btn-img {
+    background-color: unset !important;
+    box-shadow: unset;
+    padding: 8px;
+    height: unset;
+    border-radius: 50%;
 }

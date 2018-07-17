@@ -9,3 +9,5 @@ export const ERROR_EMAIL_NOT_VERIFY = 'You need verify your email address';
 export const CURRENT_PASS_WORD_NOT_INVALID = 'Opp! Current pass word not invalid';
 export const EXCEPTION = 'Opp! Error'
 export const SUCCESS = 'SUCCESS'
+
+export const EMAIL_NOT_EXISTS = 'Email is not exists';

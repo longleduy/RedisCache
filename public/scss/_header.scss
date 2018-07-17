@@ -34,8 +34,7 @@
         color: white;
     }
     .dropdown.edit-user button.btn.btn-primary.Ripple-parent {
-        padding: 0px 13px !important;
-        border-radius: 50%;
+        padding: 0px 5px !important;
         background-color: inherit !important;
         box-shadow: unset;
     }
@@ -46,4 +45,62 @@
         display: inline-block;
         z-index: 9999;
     }
+}
+ul.navbar-nav.ml-auto {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+label.title-header {
+    position: absolute;
+    top: 7px;
+    left: 49%;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.title-header {
+    /* padding-top: 40px; */
+    display:  flex;
+    justify-content:  center;
+    align-items:  center;
+    flex-direction: column;
+    padding:  10px 0px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.title-header label {
+    color:  white;
+    font-weight:  bold;
+    font-size: 1.1em;
+}
+
+a.nav-link.Ripple-parent {
+    font-weight:  bold;
+}
+img.icon-menu {
+    width: 70%;
+}
+
+ul.navbar-nav.mr-auto a.nav-link.Ripple-parent {
+    padding: 0px !important;
+    width: 40px;
+    height: 40px;
+    display:  flex;
+    align-items:  center;
+    flex-direction: column;
+    justify-content:  center;
+    border-radius:  50%;
+}
+img.profile-panel.DragnDropDP.preview-img {
+    width: 100%;
+    height: 100%;
+}
+img.avatar-user {
+    width: 26px;
+    border-radius: 2px;
+    height: 26px;
 }

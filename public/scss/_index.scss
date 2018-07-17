@@ -1,0 +1,81 @@
+.container.parent-div {
+    .container {
+        .row {
+            .main-zone {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                .big-img {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .big-img img {
+                    width: 100%;
+                }
+                .list-img img {
+                    width: 100%;
+                }
+                .list-img {
+                    padding-left: 20px !important;
+                }
+                .list-img .col-md-12.h-50 {
+                    display: flex;
+                    flex-direction: row;
+                }
+                .list-img .col-md-12.h-50 .col-md-4 img {
+                    height: auto;
+                    width: 90%;
+                }
+            }
+        }
+    }
+}
+
+.main-zone>div {
+    border-radius: 5px !important;
+    border: solid 1px white !important;
+    width: 228px !important;
+    height: 228px !important;
+    align-self: flex-end !important;
+}
+
+.change-info {
+    width: 100%;
+    padding: 0px !important;
+    margin-left: 0px;
+}
+
+button.btn.btn-default.Ripple-parent.btn-icon.edit-icon {
+    position: absolute;
+    top: 14px;
+    right: 9px;
+}
+
+.edit-active {
+    color: green !important
+}
+
+.btn-icon.cancel-icon {
+    position: absolute;
+    z-index: 9999;
+    top: 30px;
+    right: 69px;
+    border-radius: 50%;
+    i {
+        color: red !important
+    }
+}
+
+.confirm-password {
+    margin: 0 auto
+}
+
+.sign_form.confirm-password .md-form {
+    width: 100%;
+}
+
+.btn-icon.cancel-confirm-pass {
+    position: absolute;
+    right: 10px;
+}

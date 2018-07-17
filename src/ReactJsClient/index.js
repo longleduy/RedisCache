@@ -16,6 +16,7 @@ import Logo from "../../public/images/logo.png";
 import "font-awesome/css/font-awesome.min.css";
 // import "../public/css/materialui.min.css";
 import * as Common from '../ReactJsClient/utils/auth_common';
+import * as Common2 from '../ReactJsClient/utils/common';
 import { signInSucess, signOut } from '../ReactJsClient/actions/action'
 import * as ActionAPI from './actions/action_api'
 import * as CallAPI from './utils/api_caller'
@@ -26,11 +27,26 @@ import myReducer from './reducers/index';
 //Todo: Kết nối react với redux
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-export const store = createStore(myReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunk));
+import {
+    ConnectedRouter,
+    routerMiddleware,
+    push
+  } from "react-router-redux";
+import createHistory from "history/createBrowserHistory";
+const history = createHistory();
+const middleware = applyMiddleware(
+    routerMiddleware(history),
+    thunk
+  );
+export const store = createStore(myReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), middleware);
 
 if (Common.getToken()) {
     try {
-        let infoUser = jwt.decode(Common.getToken());
+        let avatar = Common2.getItemLocalStorage('avatar')
+        let infoUser = {
+           payload: jwt.decode(Common.getToken()),
+           avatar
+        }
         if (infoUser)
             store.dispatch(signInSucess(infoUser))
         else {
@@ -42,4 +58,4 @@ if (Common.getToken()) {
         store.dispatch(signOut('BAD_REQUEST'))
     }
 }
-ReactDOM.render(<div><Favicon url={Logo} /><Provider store={store}><Router><App /></Router></Provider></div>, document.querySelector('#root'));
+ReactDOM.render(<div><Favicon url={Logo} /><Provider store={store}><ConnectedRouter history={history}><App /></ConnectedRouter></Provider></div>, document.querySelector('#root'));

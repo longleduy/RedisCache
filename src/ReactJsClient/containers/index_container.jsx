@@ -28,8 +28,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProp = (dispatch,props) => {
     return {
-        test: (endPoint, method, data)=>{
-            dispatch(ActionAPI.callAuthenAPI(endPoint, method, data))
+        test: ()=>{
+            dispatch(ActionAPI.test())
         }
     }
 }

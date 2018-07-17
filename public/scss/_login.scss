@@ -154,3 +154,39 @@ img.auth-icon {
 .md-form label.active {
     font-weight:  bold;
 }
+img.mail_sender_icon {
+    width: 25%;
+}
+
+label.mail_sender_label {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+label.email_address{
+    color: #fffd2e !important;
+}
+button.btn.btn-default.Ripple-parent.btn.btn-sign-up.warning-btn {
+    background-color: red !important;
+    font-weight: bold;
+}
+button.send-mail-btn {
+    right: 2%;
+    position:  absolute;
+    top: 27%;
+}
+.reset-pass-success label {
+    width:  100%;
+    text-align:  center;
+    font-weight:  bold;
+    font-size: 50px;
+}
+.col-md-12.title-send-code {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.col-md-12.title-send-code label {
+    color: #fffd39 !important;
+}

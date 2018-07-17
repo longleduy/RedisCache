@@ -85,42 +85,59 @@ class Header extends Component {
         signOut('DEFAULT');
         this.props.history.push('/');
     }
+    setTitle = () => {
+        let { pathname } = this.props.history.location;
+        let path = pathname.split(/[/]/).reverse()[0];
+        let newPath = path.replace(/\_/g, ' ');
+        let titleUper = newPath.substr(0, 1).toUpperCase() + newPath.substr(1);
+        return titleUper;
+    }
     render() {
         let { user_info } = this.props;
+        let { isAuthen } = this.props.user_info;
         let level = user_info.level.toLowerCase();
         return (
             <div className="my-header">
-                {user_info.isAuthen && <div className='user-setting'><label className="title-user-name">{user_info.user_name}</label>
-                    <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} className="edit-user">
-                        <DropdownToggle color="primary">
-                            <Fa icon="bars" className="ml-1" />
-                        </DropdownToggle>
-                        <DropdownMenu>
-                            <DropdownItem header>Setting</DropdownItem>
-                            <DropdownItem>Edit profile</DropdownItem>
-                            <DropdownItem >
-                                <Link to='/user/information'>
-                                    User information
-                                </Link>
-                            </DropdownItem>
-                            <DropdownItem>
-                            <Link to='/user/change_pass_word'>
-                                    Change password
-                                </Link>
-                            </DropdownItem>
-                        </DropdownMenu>
-                    </Dropdown>
-                </div>
-                }
                 <Navbar dark expand="md" scrolling fixed="top" className="my-nav">
-                    <NavbarNav left>
-                        {showMenu()}
-                    </NavbarNav>
+                    {isAuthen &&
+                        <NavbarNav left>
+                            {showMenu()}
+                        </NavbarNav>}
                     <NavbarNav right>
+                        {user_info.isAuthen && <div style={{ marginRight: '20px' }}>
+                        
+                            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} className="edit-user">
+                                <DropdownToggle color="primary">
+                                <img src={user_info.avatar != '' ? user_info.avatar : require('../../../../public/images/no-avatar.png')} className="avatar-user" />
+                                </DropdownToggle>
+                                <DropdownMenu>
+                                    <DropdownItem header>Setting</DropdownItem>
+                                    <DropdownItem>
+                                        <Link to='/user/edit_profile'>
+                                            Edit profile
+                                </Link>
+                                    </DropdownItem>
+                                    <DropdownItem >
+                                        <Link to='/user/information'>
+                                            User information
+                                </Link>
+                                    </DropdownItem>
+                                    <DropdownItem>
+                                        <Link to='/user/change_pass_word'>
+                                            Change password
+                                </Link>
+                                    </DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
+                            <label className="title-user-name">{user_info.user_name}</label>
+                        </div>
+                        }
                         {this.displayButtonSign()}
-                        {user_info.isAuthen && <img className="img-lvl-header" src={require(`../../../../public/images/rank/${level}-rank.png`)} />}
                     </NavbarNav>
                 </Navbar>
+                <div className="title-header">
+                    <label>{this.setTitle()}</label>
+                </div>
             </div>
         )
     }

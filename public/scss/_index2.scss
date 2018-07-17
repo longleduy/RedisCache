@@ -1,0 +1,50 @@
+span.mz-small-title {
+    margin:  10px;
+    letter-spacing: .5px;
+}
+
+span.mz-big-title {
+    font-weight:  bold;
+    font-size:  1.4em;
+}
+
+span.mz-big-title:after {
+    content: "";
+    display:  block;
+    font-size: 20px;
+    width: 108px;
+    background-color: $hightline-color;
+    height: 2px;
+    margin: 3px auto;
+}
+
+.main-zone {
+    min-height: 57vh;
+}
+.main-title {
+    min-height: 35vh;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+}
+button.mz-button {
+    max-height: 35px;
+    background-color:$hightline-color !important;
+    padding: 0px 17px;
+    font-weight:  bold;
+    color: #fbfbfb !important;
+}
+.col-md-12.main-title div {
+    border:  solid 1px #ccc;
+}
+.main-title .col-md-4 {
+    display:  flex;
+}
+.main-title .col-md-4 .col-md-12 {
+    display:  flex;
+    flex-direction:  column;
+}
+.main-title .col-md-4 .col-md-12 .fa-html5 {
+    color: $hightline-color;
+    font-size: 2.5em !important;
+}

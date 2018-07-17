@@ -5,7 +5,8 @@ const userSchema = mongoose.Schema({
     email: {type: String, required: true},
     permisson: {type: String, required: true},
     provider: {type: String, required: true},
-    active: {type: Boolean, required: true}
+    active: {type: Boolean, required: true},
+    avatar: {type: String},
 });
 userSchema.methods.validatePass = function (password) {
     return bcrypt.compareSync(password, this.password);

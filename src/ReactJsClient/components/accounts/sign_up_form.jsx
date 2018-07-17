@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Input, Button, Fa } from 'mdbreact'
 import {withRouter} from 'react-router-dom'
-import { callApi } from '../../utils/api_caller'
+import { callApi, getApi } from '../../utils/api_caller'
 import * as validate from '../../contants/accounts/sign'
 import { Link } from 'react-router-dom'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -91,7 +91,7 @@ class SignUp extends Component {
             return false;
         }
         else if (_email != '') {
-            let res = await callApi('user/check_email', 'POST', this.state.userInfo);
+            let res = await getApi('user/check_email', this.state.userInfo);
             if (res.data.status == false) {
                 $('#email').next('label').addClass('err_label').text(res.data.message);
                 return false;
@@ -166,9 +166,6 @@ class SignUp extends Component {
                             <div className="col-md-3"></div>
                             <div className="col-md-6 sign_form">
                                 <div className="row">
-                                    <div className="col-md-12 div-user-img">
-                                        <span className="big-title" id='sign_lbl'>Sign Up</span>
-                                    </div>
                                     <div className="col-md-12">
                                         <Input
                                             label="User name"

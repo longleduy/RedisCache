@@ -3,7 +3,8 @@ import * as ActionTypes from '../../contants/ActionTypes';
 const _initialState = {
     success: false,
     errMessage: "",
-    field: ""
+    field: "",
+    status:''
 }
 const change_password = (state = _initialState, action) => {
     switch (action.type) {
@@ -14,7 +15,8 @@ const change_password = (state = _initialState, action) => {
                 return {
                     success: true,
                     errMessage: "",
-                    field: ""
+                    field: "",
+                    status:''
                 }
             }
             else {
@@ -24,6 +26,11 @@ const change_password = (state = _initialState, action) => {
                     field: field
                 }
             }
+        case ActionTypes.DEL_REQUEST:
+        return {
+            ...state,
+            status:'DEL_REQUEST'
+        }
         default:
             return { ...state };
     }

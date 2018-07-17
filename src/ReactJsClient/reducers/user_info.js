@@ -6,6 +6,7 @@ const _initialState = {
     level: "",
     email:"",
     provider:"",
+    avatar:"",
     status: 'DEFAULT'
 }
 const user_info = (state = _initialState, action) => {
@@ -14,11 +15,13 @@ const user_info = (state = _initialState, action) => {
             return {
                 ...state,
                 isAuthen: true,
-                user_name: action.data.user_name,
-                level: action.data.permisson,
-                email: action.data.email,
-                provider: action.data.provider
+                user_name: action.data.payload.user_name,
+                level: action.data.payload.permisson,
+                email: action.data.payload.email,
+                provider: action.data.payload.provider,
+                avatar:typeof action.data.avatar != 'undefined' ? action.data.avatar : state.avatar
             };
+            console.log(state)
         case ActionTypes.SIGN_OUT:
             return {
                 ...state,

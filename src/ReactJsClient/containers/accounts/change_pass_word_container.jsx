@@ -10,12 +10,14 @@ class ChangePassWordContainer extends Component {
 
     }
     render() {
-        let { onChangePassWord, changePassword } = this.props;
+        let { onChangePassWord, changePassword, userInfo, delRequest } = this.props;
         return (
             <Fragment>
                 <ChangePassWord
                     onChangePassWord={onChangePassWord}
                     changePassword={changePassword}
+                    userInfo={userInfo}
+                    delRequest={delRequest}
                 />
             </Fragment>
         )
@@ -24,13 +26,17 @@ class ChangePassWordContainer extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        changePassword: state.change_password
+        changePassword: state.change_password,
+        userInfo: state.user_info
     }
 }
 const mapDispatchToProp = (dispatch, props) => {
     return {
         onChangePassWord: (data) => {
-            dispatch(ActionApi.changePassword(data))
+            dispatch(ActionApi.callAuthenAPI(`user/change_pass_word`, 'POST', data,'CHANGE_PASSWORD'))
+        },
+        delRequest: () => {
+            dispatch(ActionApi.callAuthenAPI(`user/cancel_change_password`, 'POST', null,'DEL_REQUEST'))
         }
     }
 }

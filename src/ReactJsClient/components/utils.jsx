@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom
 import * as ContainerRoutes from '../components/routes/container_routes.jsx'
 import requireAuth from '../containers/main/private_route_HOC.jsx'
 //Todo: Custom menu link
-const MyNavLink = ({ label, to, activeOnlyWhenExact }) => {
+const MyNavLink = ({ img, to, activeOnlyWhenExact }) => {
     return (
         <Route path={to} exact={activeOnlyWhenExact}
             children={({ match }) => {
@@ -13,29 +13,50 @@ const MyNavLink = ({ label, to, activeOnlyWhenExact }) => {
                 return (
                     <NavItem className={active}>
                         <NavLink to={to} exact={true}>
-                            {label}
+                        <img src={require(`../../../public/images/icon/${img}.png`)} className="icon-menu"/>
                         </NavLink>
                     </NavItem>
                 )
             }}
         />
     )
-}
+} 
 const menus = [
     {
         name: 'Home',
         to: '/',
-        exact: true
+        exact: true,
+        img: 'home'
+    },
+    {
+        name: 'Reactjs',
+        to: '/reactjs',
+        exact: true,
+        img: 'reactjs'
+    },
+    {
+        name: 'Java',
+        to: '/java',
+        exact: true,
+        img: 'java'
     },
     {
         name: 'Support',
-        to: '/support',
-        exact: true
+        to: '/nodejs',
+        exact: true,
+        img: 'nodejs'
     },
     {
         name: 'About',
-        to: '/index',
-        exact: true
+        to: '/angular',
+        exact: true,
+        img: 'angular'
+    },
+    {
+        name: 'Python',
+        to: '/python',
+        exact: true,
+        img: 'python'
     }
 ]
 export const showMenu = () => {
@@ -43,7 +64,7 @@ export const showMenu = () => {
     menu = menus.map((menu, key) => {
         return <MyNavLink
             key={key}
-            label={menu.name}
+            img={menu.img}
             to={menu.to}
             activeOnlyWhenExact={menu.exact}
         />
@@ -68,7 +89,7 @@ export const showPrivateRoute = () => {
         return <Route
             key={index}
             path={router.path}
-            component={requireAuth(router.component)}
+            component={requireAuth(router.component,router.title)}
             exact={router.exact}
         />
     })

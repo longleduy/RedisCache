@@ -4,9 +4,28 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome",
+            "name": "Launch ReactJs Debug",
             "url": "https://localhost:8085",
             "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Mocha Test",
+            "runtimeExecutable": "nodemon",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "restart": true,
+            "args": ["test/*.js", "--no-timeouts"],
+            "protocol": "inspector",
+            "stopOnEntry": false,
+            "cwd": "${workspaceRoot}",
+            "runtimeArgs": [
+                "--require",
+                "babel-register"
+            ],
+            "env": { "NODE_ENV": "test"},
+            "sourceMaps": true,
+            "smartStep": true
         },
         {
             "type": "node",
